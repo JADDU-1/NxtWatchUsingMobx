@@ -1,0 +1,64 @@
+{
+  "fields_data": [
+    { "type": "fullName", "field": "fullName", "label": "Name" },
+    { "type": "phone", "field": "phoneNumber", "label": "Mobile number" },
+    {
+      "type": "select",
+      "field": "preferredLanguage",
+      "label": "Preferred language",
+      "options": ["Telugu", "Hindi", "English"]
+    },
+    {
+      "type": "select",
+      "field": "occupation",
+      "label": "Occupation",
+      "options": [
+        "Looking for a Job",
+        "College Student",
+        "School / Intermediate Student",
+        "IT Working professional",
+        "Non-IT Working professional"
+      ]
+    },
+    {
+      "type": "select",
+      "field": "intermediateOr12CompletionYear",
+      "label": "Intermediate / 12th completion year",
+      "options": ["2021", "2022", "2023", "After 2023"],
+      "isRelevant": true,
+      "relevantCondition": "values['occupation'] === 'School / Intermediate Student'",
+      "validation_type": "string",
+      "validations": [{ "type": "required", "params": ["*Required"] }]
+    },
+    {
+      "type": "select",
+      "field": "graduationYearOrExpected",
+      "label": "Graduation Year or Expected",
+      "options": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2019",
+        "2018",
+        "2017",
+        "2016",
+        "Other"
+      ],
+      "isRelevant": true,
+      "relevantCondition": "values['occupation'] !== 'School / Intermediate Student' && values['occupation'] !== ''",
+      "validation_type": "string",
+      "validations": [{ "type": "required", "params": ["*Required"] }]
+    },
+    {
+      "type": "number",
+      "field": "otherGraduationYear",
+      "label": "Other",
+      "isRelevant": true,
+      "relevantCondition": "values['graduationYearOrExpected'] === 'Other'",
+      "validation_type": "number",
+      "validations": [{ "type": "required", "params": ["*Required"] }]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema": {
+    "fullName": "yup.string().trim('*Required').required('*Required')",
+    "phoneNumber": "yup.string().trim('*Required').required('*Required').isValidIndianMobileNumber().matches('^[5-9]{1}[0-9]{9}$', 'Enter a Valid Mobile Number')",
+    "preferredLanguage": "yup.string().required('*Required')",
+    "occupation": "yup.string().required('*Required')",
+    "intermediateOr12CompletionYear": "yup.string().required('*Required')",
+    "graduationYearOrExpected": "yup.string().required('*Required')",
+    "otherGraduationYear": "yup.string().trim('*Required').required('*Required').matches('^[0-9]{4}$', 'Enter a valid graduation year')"
+  }
+}
