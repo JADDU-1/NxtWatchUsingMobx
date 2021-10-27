@@ -3,10 +3,12 @@ import { observer, inject } from "mobx-react";
 import { observable, action } from "mobx";
 import LoginForm from "../../components/LoginForm";
 import AuthenticStore from "../../stores/AuthenticationStore/AuthenticationStore";
-import { RouteComponentProps } from "react-router-dom";
+import { Redirect, RouteComponentProps } from "react-router-dom";
 import { LoginScreenContainer } from "./styledComponents";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { HOME_PAGE_PATH } from "../../constants/RouteConstants";
+import { apiStatusConstants } from "../../constants/APIConstants";
+import { getAccessToken } from "../../utils/StorageUtils";
 
 interface PropsType extends RouteComponentProps {}
 interface PropsType extends WithTranslation {}
@@ -39,12 +41,6 @@ class LoginPageRoute extends Component<PropsType> {
   };
 
   @action.bound
-  onLogInSuccess() {
-    const { history } = this.props;
-    history.replace(HOME_PAGE_PATH);
-  }
-
-  @action.bound
   onSubmitCredentials = () => {
     const { t } = this.props;
     const name = this.username;
@@ -59,13 +55,10 @@ class LoginPageRoute extends Component<PropsType> {
     } else {
       this.usernameError = "";
       this.passwordError = "";
-      this.getAuthStore().getUserLogIn(
-        {
-          username: name,
-          password: password,
-        },
-        this.onLogInSuccess
-      );
+      this.getAuthStore().getUserLogIn({
+        username: name,
+        password: password,
+      });
     }
   };
 
@@ -78,20 +71,26 @@ class LoginPageRoute extends Component<PropsType> {
     } = this.getAuthStore();
 
     return (
-      <LoginScreenContainer>
-        <LoginForm
-          username={this.username}
-          password={this.password}
-          shouldShowPasswordStatus={shouldShowPasswordStatus}
-          shouldShowPassword={shouldShowPassword}
-          usernameError={this.usernameError}
-          passwordError={this.passwordError}
-          onChangeUserName={this.onChangeUserName}
-          onChangePassword={this.onChangePassword}
-          onSubmitCredentials={this.onSubmitCredentials}
-          getUserLogInAPIError={getUserLogInAPIError}
-        />
-      </LoginScreenContainer>
+      <>
+        {getAccessToken() ? (
+          <Redirect to={HOME_PAGE_PATH} />
+        ) : (
+          <LoginScreenContainer>
+            <LoginForm
+              username={this.username}
+              password={this.password}
+              shouldShowPasswordStatus={shouldShowPasswordStatus}
+              shouldShowPassword={shouldShowPassword}
+              usernameError={this.usernameError}
+              passwordError={this.passwordError}
+              onChangeUserName={this.onChangeUserName}
+              onChangePassword={this.onChangePassword}
+              onSubmitCredentials={this.onSubmitCredentials}
+              getUserLogInAPIError={getUserLogInAPIError}
+            />
+          </LoginScreenContainer>
+        )}
+      </>
     );
   }
 }

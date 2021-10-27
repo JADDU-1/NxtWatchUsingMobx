@@ -1,6 +1,4 @@
 import { create } from "apisauce";
-import { apiMethods } from "../constants/APIConstants";
-import { networkCallWithoutApisauce } from "../utils/Apiutils";
 
 class AuthenticService {
   api;

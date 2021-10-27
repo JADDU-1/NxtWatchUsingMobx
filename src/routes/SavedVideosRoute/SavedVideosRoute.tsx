@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import NavBarsWrapper from "../../common/components/NavBarsWrapper/NavBarsWrapper";
 
 class SavedVideosRoute extends Component {
   render() {
-    return <div>Trending Videos</div>;
+    return <NavBarsWrapper component={<div>Saved Videos Page</div>} />;
   }
 }
 

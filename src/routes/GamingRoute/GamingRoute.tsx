@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import NavBarsWrapper from "../../common/components/NavBarsWrapper/NavBarsWrapper";
 
 class GamingRoute extends Component {
   render() {
-    return <div>Gaming Videos</div>;
+    return <NavBarsWrapper component={<div>Gaming Page</div>} />;
   }
 }
 

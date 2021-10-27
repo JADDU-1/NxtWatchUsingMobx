@@ -1,0 +1,18 @@
+[
+  {
+    "id": "HOME",
+    "optionText": "Home"
+  },
+  {
+    "id": "TRENDING",
+    "optionText": "Trending"
+  },
+  {
+    "id": "GAMING",
+    "optionText": "Gaming"
+  },
+  {
+    "id": "SAVED VIDEOS",
+    "optionText": "Saved videos"
+  }
+]

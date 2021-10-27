@@ -17,6 +17,12 @@ import ProtectedRoute from "./ProtectedRoute";
 const CommonRoute = () => (
   <Router basename={process.env.PUBLIC_URL}>
     <Switch>
+      <Route
+        exact
+        path={LOGIN_IN_PATH}
+        key={LOGIN_IN_PATH}
+        component={LoginPageRoute}
+      />
       <ProtectedRoute
         exact
         path={HOME_PAGE_PATH}
@@ -40,12 +46,6 @@ const CommonRoute = () => (
         path={SAVED_VIDEOS_PAGE}
         key={SAVED_VIDEOS_PAGE}
         component={SavedVideosRoute}
-      />
-      <Route
-        exact
-        path={LOGIN_IN_PATH}
-        key={LOGIN_IN_PATH}
-        component={LoginPageRoute}
       />
     </Switch>
   </Router>

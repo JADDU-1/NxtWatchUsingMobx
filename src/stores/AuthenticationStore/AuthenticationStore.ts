@@ -2,24 +2,28 @@ import { observable, action, computed } from "mobx";
 import { API_INITIAL } from "@ib/api-constants";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import { setAccessToken } from "../../utils/StorageUtils";
-import AuthenticService from "../../services";
+import AuthenticService from "../../services/AuthenticServices";
 import { apiStatusConstants } from "../../constants/APIConstants";
 
 class AuthenticStore {
-  @observable getUserLogInAPIStatus!: number;
-  @observable getUserLogInAPIError!: string | null;
+  @observable getUserLogInAPIStatus: string;
+  @observable getUserLogInAPIError: string | null;
   @observable shouldShowPassword: boolean;
   @observable authAPIService: AuthenticService;
 
   constructor(authService: AuthenticService) {
     this.shouldShowPassword = false;
+    this.getUserLogInAPIStatus = apiStatusConstants.initial;
+    this.getUserLogInAPIError = null;
     this.authAPIService = authService;
   }
 
   @action.bound
   setUserLogInAPIResponse(response: any) {
+    console.log(response, "dfn");
     if (response.status) {
-      setAccessToken(response.jwt_token);
+      this.getUserLogInAPIStatus = apiStatusConstants.success;
+      setAccessToken(response.details.jwt_token);
     } else {
       this.setGetUserLogInAPIError(response.details);
     }
@@ -45,12 +49,11 @@ class AuthenticStore {
     this.getUserLogInAPIError = error.error_msg;
   }
 
-  getUserLogIn(data: Object, onSuccess: Function) {
+  getUserLogIn(data: Object) {
     const AuthPromise = this.authAPIService.LogInAPI(data);
     return bindPromiseWithOnSuccess(AuthPromise)
       .to(this.setGetUserLogInAPIStatus, (response) => {
         this.setUserLogInAPIResponse(response);
-        onSuccess();
       })
       .catch((error) => {
         this.setGetUserLogInAPIError(error);
