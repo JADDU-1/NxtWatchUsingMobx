@@ -2,21 +2,36 @@ import { API_FAILED, API_FETCHING, API_SUCCESS } from "@ib/api-constants";
 import { action, observable } from "mobx";
 import { inject, observer } from "mobx-react";
 import React, { Component } from "react";
+import { withTranslation, WithTranslation } from "react-i18next";
 import NavBarsWrapper from "../../common/components/NavBarsWrapper/NavBarsWrapper";
+import HomePageVideoCardsList from "../../components/HomePageVideoCardsList/HomePageVideoCardsList";
 import PremiumPlanCard from "../../components/PremiumPlanCard/PremiumPlanCard";
+import CommonContext from "../../context";
 import HomePageStore from "../../stores/HomePageStore/HomePageStore";
-import { HomePageWrapper } from "./styledComponents";
+import {
+  HomePageWrapper,
+  SearchBarAndCardsContainer,
+  SearchField,
+  SearchIcon,
+  SearchIconContainer,
+  SearInputAndIconContainer,
+} from "./styledComponents";
 
 // interface InjectedProps extends PropsType {
 //   authenticStore: AuthenticStore;
 // }
-interface InjectedProps {
+interface InjectedProps extends WithTranslation {
   homePageStore: HomePageStore;
 }
 @inject("homePageStore")
 @observer
 class HomePageRouter extends Component<InjectedProps> {
-  @observable searchedString: string = "";
+  searchedString: string;
+
+  constructor(props: any) {
+    super(props);
+    this.searchedString = "";
+  }
 
   getInjectedProps = (): InjectedProps => this.props as InjectedProps;
 
@@ -32,13 +47,27 @@ class HomePageRouter extends Component<InjectedProps> {
   };
 
   @action.bound
-  onChangeSearchInput = () => {};
+  getSearchedData = () => {
+    console.log(1);
+    this.doNetworkCalls();
+  };
 
-  renderUiBasedOnApiStatus = () => {
-    const { getHomePageAPIStatus } = this.getHomePageStore();
+  @action.bound
+  onChangeSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.searchedString = event.target.value;
+  };
+
+  renderUiBasedOnApiStatus = (theme: string) => {
+    const { getHomePageAPIStatus, getHomePageVideosList } =
+      this.getHomePageStore();
     switch (getHomePageAPIStatus) {
       case API_SUCCESS:
-        return <div>Home</div>;
+        return (
+          <HomePageVideoCardsList
+            theme={theme}
+            homePageVideosList={getHomePageVideosList}
+          />
+        );
       case API_FAILED:
         return <div>failure</div>;
       case API_FETCHING:
@@ -49,26 +78,42 @@ class HomePageRouter extends Component<InjectedProps> {
   };
 
   renderHomeUI = () => {
+    const { t } = this.props;
     const { onChangeBannerCardStatus, shouldShowBannerCard } =
       this.getHomePageStore();
     return (
-      <HomePageWrapper>
-        <PremiumPlanCard
-          onChangeBannerCardStatus={onChangeBannerCardStatus}
-          shouldShowBannerCard={shouldShowBannerCard}
-        />
-        {this.renderUiBasedOnApiStatus()}
-      </HomePageWrapper>
+      <CommonContext.Consumer>
+        {(value) => {
+          const { selectedTheme } = value;
+          return (
+            <HomePageWrapper theme={selectedTheme}>
+              <PremiumPlanCard
+                onChangeBannerCardStatus={onChangeBannerCardStatus}
+                shouldShowBannerCard={shouldShowBannerCard}
+              />
+              <SearchBarAndCardsContainer>
+                <SearInputAndIconContainer>
+                  <SearchField
+                    fieldType={t("homePage.searchInputType")}
+                    onChangeFunction={this.onChangeSearchInput}
+                    placeHolderText={t("homePage.searchInputPlaceHolderText")}
+                  />
+                  <SearchIconContainer>
+                    <SearchIcon onClick={this.getSearchedData} />
+                  </SearchIconContainer>
+                </SearInputAndIconContainer>
+                {this.renderUiBasedOnApiStatus(selectedTheme)}
+              </SearchBarAndCardsContainer>
+            </HomePageWrapper>
+          );
+        }}
+      </CommonContext.Consumer>
     );
   };
 
   render() {
-    const { getHomePageVideosList, getHomePageAPIStatus } =
-      this.getHomePageStore();
-    console.log(getHomePageAPIStatus);
-
     return <NavBarsWrapper component={this.renderHomeUI()} />;
   }
 }
 
-export default HomePageRouter;
+export default withTranslation()(HomePageRouter);

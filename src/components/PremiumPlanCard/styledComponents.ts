@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io";
 export const PremiumPlanCardContainer = styled.div`
   ${tw`px-8 py-4 bg-cover`}
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
-  border: 1px solid red;
+
   height: 20vh;
 `;
 

@@ -8,9 +8,9 @@ import { HiFire } from "react-icons/hi";
 import { SiYoutubegaming } from "react-icons/si";
 
 export const SideNavBarContainer = styled.div`
-  ${tw`flex flex-col  h-full  py-4`}
-  width:12%;
-  border: 1px solid red;
+  ${tw`flex flex-col    py-4`}
+  height:91vh;
+  width: 12%;
 `;
 
 export const OptionsContainer = styled.div`

@@ -8,16 +8,19 @@ import stores from "./stores";
 import { observer, Provider } from "mobx-react";
 import { observable, action } from "mobx";
 import { LightTheme, HomePage, DarkTheme } from "./constants/CommonConstants";
+import VideoDetailsModel from "./stores/models/VideoDetailsModel/VideoDetailsModel";
 
 @observer
 class App extends Component {
   @observable selectedTheme: string;
   @observable selectedPage: string;
+  @observable savedVideosList: any;
 
   constructor(props: any) {
     super(props);
     this.selectedTheme = LightTheme;
     this.selectedPage = HomePage;
+    this.savedVideosList = [];
   }
 
   @action.bound
@@ -29,12 +32,26 @@ class App extends Component {
 
   @action.bound
   onChangeSelectedPage = (pageName: string) => {
-    console.log(1);
     this.selectedPage = pageName;
   };
 
+  @action.bound
+  onAddVideo = (videoDetails: VideoDetailsModel) => {
+    const { savedVideosList } = this;
+    this.savedVideosList = [...savedVideosList, videoDetails];
+  };
+
+  onRemoveVideo = (videoDetails: VideoDetailsModel) => {
+    const { savedVideosList } = this;
+    const videoObject = savedVideosList.filter(
+      (eachVideoItem: VideoDetailsModel) => eachVideoItem.id !== videoDetails.id
+    );
+
+    this.setState({ savedVideosList: videoObject });
+  };
+
   render() {
-    const { selectedTheme, selectedPage } = this;
+    const { selectedTheme, selectedPage, savedVideosList } = this;
     return (
       <Provider {...stores}>
         <CommonContext.Provider
@@ -43,6 +60,9 @@ class App extends Component {
             onChangeTheme: this.onChangeTheme,
             selectedPage,
             onChangeSelectedPage: this.onChangeSelectedPage,
+            savedVideosList,
+            onAddVideo: this.onAddVideo,
+            onRemoveVideo: this.onRemoveVideo,
           }}
         >
           <I18nextProvider i18n={i18n}>

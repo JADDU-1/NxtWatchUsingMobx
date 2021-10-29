@@ -5,8 +5,7 @@ import { BsBrightnessHigh, BsMoonFill } from "react-icons/bs";
 import { LightTheme } from "../../../constants/CommonConstants";
 
 export const HeaderNavBarWrapper = styled.div`
-  ${tw`flex flex-row justify-between items-center px-10 `}
-  border:1px solid red;
+  ${tw` flex flex-row justify-between items-center px-10 `}
 `;
 
 export const NxtWatchNavLogo = styled(NxtWatchLogo)`

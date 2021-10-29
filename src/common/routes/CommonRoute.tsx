@@ -6,12 +6,15 @@ import {
   LOGIN_IN_PATH,
   SAVED_VIDEOS_PAGE,
   TRENDING_VIDEOS_PAGE,
+  VideoDetailsId,
+  VIDEO_DETAILS,
 } from "../../constants/RouteConstants";
 import GamingRoute from "../../routes/GamingRoute/GamingRoute";
 import HomePageRouter from "../../routes/HomePageRouter/HomePageRouter";
 import LoginPageRoute from "../../routes/LoginPageRouter/LoginPageRouter";
 import SavedVideosRoute from "../../routes/SavedVideosRoute/SavedVideosRoute";
 import TrendingVideosRoute from "../../routes/TrendingVideosRoute/TrendingVideosRoute";
+import VideoItemDetailsRoute from "../../routes/VideoItemDetailsRoute/VideoItemDetailsRoute";
 import ProtectedRoute from "./ProtectedRoute";
 
 const CommonRoute = () => (
@@ -46,6 +49,12 @@ const CommonRoute = () => (
         path={SAVED_VIDEOS_PAGE}
         key={SAVED_VIDEOS_PAGE}
         component={SavedVideosRoute}
+      />
+      <ProtectedRoute
+        exact
+        path={`${VIDEO_DETAILS}:id`}
+        key={`${VIDEO_DETAILS}:id`}
+        component={VideoItemDetailsRoute}
       />
     </Switch>
   </Router>

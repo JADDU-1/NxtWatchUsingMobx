@@ -15,6 +15,8 @@ interface InputElementProps {
   placeHolderText: string;
   labelText?: string;
   enteredValue?: any;
+  shouldShowLabel?: boolean;
+  className?: any;
 }
 
 @observer
@@ -28,11 +30,15 @@ class InputFieldWithLabel extends Component<InputElementProps> {
       labelText,
       shouldShowErrorMessage,
       enteredValue,
+      shouldShowLabel,
+      className,
     } = this.props;
 
     return (
-      <InputContainer>
-        <LabelTag htmlFor={labelText}>{labelText}</LabelTag>
+      <InputContainer className={className}>
+        {shouldShowLabel && (
+          <LabelTag htmlFor={labelText}>{labelText}</LabelTag>
+        )}
         <InputTag
           id={labelText}
           type={fieldType}

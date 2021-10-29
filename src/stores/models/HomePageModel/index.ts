@@ -5,7 +5,7 @@ class HomePageEachVideoModel {
   id: string;
   title: string;
   thumbnailUrl: string;
-  channel: object;
+  channel: { name: string; profileImageUrl: string };
   viewsCount: string;
   publishedAt: string;
 
