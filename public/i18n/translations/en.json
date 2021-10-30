@@ -39,5 +39,14 @@
     "getItNowButtonText": "GET IT NOW",
     "searchInputType": "search",
     "searchInputPlaceHolderText": "Search"
+  },
+  "videoDetailsPage": {
+    "like": "Like",
+    "dislike": "Dislike",
+    "save": "Save",
+    "saved": "Saved",
+    "views": "views",
+    "ago": "ago",
+    "subscribers": "subscribers"
   }
 }

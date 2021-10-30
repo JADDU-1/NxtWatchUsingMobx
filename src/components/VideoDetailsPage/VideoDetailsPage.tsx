@@ -13,6 +13,7 @@ import {
   ChannelLogo,
   ChannelName,
 } from "../HomePageVideoCard/stylesComponents";
+import { withTranslation, WithTranslation } from "react-i18next";
 import { observable } from "mobx";
 import {
   VideoDetailsContainer,
@@ -32,7 +33,7 @@ import {
   ChannelTitle,
 } from "./styledComponents";
 
-interface VideoDetailsPropTypes {
+interface VideoDetailsPropTypes extends WithTranslation {
   videoDetails: VideoDetailsModel;
 }
 
@@ -49,11 +50,8 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
     this.isDisliked = !this.isDisliked;
   };
 
-  onChangeSaveVideoStatus = () => {
-    this.isSaved = !this.isSaved;
-  };
-
   render() {
+    const { t } = this.props;
     const { videoDetails } = this.props;
     const {
       id,
@@ -71,7 +69,12 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
     return (
       <CommonContext.Consumer>
         {(value) => {
-          const { selectedTheme } = value;
+          const { selectedTheme, onAddVideo } = value;
+
+          const onChangeSaveVideoStatus = () => {
+            this.isSaved = !this.isSaved;
+            onAddVideo(videoDetails);
+          };
           return (
             <VideoDetailsContainer theme={selectedTheme}>
               <VideoContainer>
@@ -85,10 +88,12 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
               <VideoTitle theme={selectedTheme}>{title}</VideoTitle>
               <ViewsAndLikesDislikesContainer>
                 <ViewAndPublishedTimeContainer>
-                  <Views theme={selectedTheme}>{viewsCount} Views</Views>
+                  <Views theme={selectedTheme}>
+                    {viewsCount} {t("videoDetailsPage.views")}
+                  </Views>
                   <DotElement theme={selectedTheme}></DotElement>
                   <PublishedTime theme={selectedTheme}>
-                    {published}
+                    {published} {t("videoDetailsPage.ago")}
                   </PublishedTime>
                 </ViewAndPublishedTimeContainer>
                 <LikesAndDislikesContainer>
@@ -98,7 +103,7 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
                     //isLiked={this.isLiked}
                   >
                     <BiLike size={20} />
-                    Like
+                    {t("videoDetailsPage.like")}
                   </LikeButton>
                   <DislikeButton
                     theme={selectedTheme}
@@ -106,15 +111,15 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
                     //isDisliked={this.isDisliked}
                   >
                     <BiDislike size={20} />
-                    Dislike
+                    {t("videoDetailsPage.dislike")}
                   </DislikeButton>
                   <SavedVideoButton
                     theme={selectedTheme}
-                    onClick={this.onChangeSaveVideoStatus}
+                    onClick={onChangeSaveVideoStatus}
                     //isSaved={this.isSaved}
                   >
                     <MdPlaylistAdd size={20} />
-                    Save
+                    {t("videoDetailsPage.save")}
                   </SavedVideoButton>
                 </LikesAndDislikesContainer>
               </ViewsAndLikesDislikesContainer>
@@ -126,7 +131,8 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
                     {channel.name}
                   </ChannelTitle>
                   <Subscribers>
-                    {channel.subscribersCount} subscribers
+                    {channel.subscribersCount}{" "}
+                    {t("videoDetailsPage.subscribers")}
                   </Subscribers>
                   <Description theme={selectedTheme}>{description}</Description>
                 </ChannelNameAndDescriptionContainer>
@@ -139,4 +145,4 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
   }
 }
 
-export default VideoDetailsPage;
+export default withTranslation()(VideoDetailsPage);
