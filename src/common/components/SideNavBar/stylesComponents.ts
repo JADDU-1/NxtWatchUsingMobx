@@ -8,13 +8,13 @@ import { HiFire } from "react-icons/hi";
 import { SiYoutubegaming } from "react-icons/si";
 
 export const SideNavBarContainer = styled.div`
-  ${tw`flex flex-col    py-4`}
+  ${tw`flex flex-col py-4 `}
   height:91vh;
   width: 12%;
 `;
 
-export const OptionsContainer = styled.div`
-  ${tw`flex flex-col  flex-grow`}
+export const OptionsContainer = styled.ul`
+  ${tw`flex flex-col list-none flex-grow px-0`}
 `;
 
 export const ContactUsSectionContainer = styled.div`

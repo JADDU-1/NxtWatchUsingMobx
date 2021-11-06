@@ -23,11 +23,18 @@ import {
   SavedVideosPage,
   TrendingVideosPage,
 } from "../../../constants/CommonConstants";
+//import { RouteComponentProps } from "react-router-dom";
+
+//  interface SideNavBarProps extends RouteComponentProps {}
 
 interface SideNavBarProps extends WithTranslation {}
 
 const SideNavBar = (props: SideNavBarProps) => {
   const { t } = props;
+
+  //const { history } = props;
+  // const { pathname } = history.location;
+  //console.log(history);
   return (
     <CommonContext.Consumer>
       {(value) => {

@@ -48,5 +48,11 @@
     "views": "views",
     "ago": "ago",
     "subscribers": "subscribers"
+  },
+  "trendingText": "Trending",
+  "savedVideos": "Saved Videos",
+  "gaming": {
+    "gamingTitle": "Gaming",
+    "watchingWorldWideText": "Watching Worldwide"
   }
 }

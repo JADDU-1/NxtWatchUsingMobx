@@ -3,6 +3,7 @@ import { action, observable } from "mobx";
 import { inject, observer } from "mobx-react";
 import React, { Component } from "react";
 import { withTranslation, WithTranslation } from "react-i18next";
+import LoaderComponent from "../../common/components/Loader/Loader";
 import NavBarsWrapper from "../../common/components/NavBarsWrapper/NavBarsWrapper";
 import HomePageVideoCardsList from "../../components/HomePageVideoCardsList/HomePageVideoCardsList";
 import PremiumPlanCard from "../../components/PremiumPlanCard/PremiumPlanCard";
@@ -17,16 +18,13 @@ import {
   SearInputAndIconContainer,
 } from "./styledComponents";
 
-// interface InjectedProps extends PropsType {
-//   authenticStore: AuthenticStore;
-// }
 interface InjectedProps extends WithTranslation {
   homePageStore: HomePageStore;
 }
 @inject("homePageStore")
 @observer
 class HomePageRouter extends Component<InjectedProps> {
-  searchedString: string;
+  @observable searchedString: string;
 
   constructor(props: any) {
     super(props);
@@ -42,13 +40,14 @@ class HomePageRouter extends Component<InjectedProps> {
   componentDidMount() {
     this.doNetworkCalls();
   }
+
+  @action.bound
   doNetworkCalls = () => {
     this.getHomePageStore().getHomePageData(this.searchedString);
   };
 
   @action.bound
   getSearchedData = () => {
-    console.log(1);
     this.doNetworkCalls();
   };
 
@@ -60,6 +59,7 @@ class HomePageRouter extends Component<InjectedProps> {
   renderUiBasedOnApiStatus = (theme: string) => {
     const { getHomePageAPIStatus, getHomePageVideosList } =
       this.getHomePageStore();
+
     switch (getHomePageAPIStatus) {
       case API_SUCCESS:
         return (
@@ -71,7 +71,7 @@ class HomePageRouter extends Component<InjectedProps> {
       case API_FAILED:
         return <div>failure</div>;
       case API_FETCHING:
-        return <div>loading the view</div>;
+        return <LoaderComponent />;
       default:
         return null;
     }

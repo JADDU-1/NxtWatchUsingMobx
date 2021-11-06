@@ -17,6 +17,7 @@ import {
   GamingIcon,
   OptionText,
   SavedVideosIcon,
+  EachOption,
 } from "./styledComponents";
 
 interface OptionDetails {
@@ -68,16 +69,17 @@ const EachSideBarOption = (props: EachSideBarOptionPropTypes) => {
   const isSelectedOption = selectedPage === id ? true : false;
 
   return (
-    <Option
-      to={getPagePath()}
-      onClick={() => {
-        onChangeSelectedPage(id);
-      }}
-      theme={isSelectedOption}
-      color={selectedTheme}
-    >
-      {getIcon()}
-      <OptionText theme={selectedTheme}>{optionText}</OptionText>
+    <Option to={getPagePath()}>
+      <EachOption
+        onClick={() => {
+          onChangeSelectedPage(id);
+        }}
+        theme={isSelectedOption}
+        color={selectedTheme}
+      >
+        {getIcon()}
+        <OptionText theme={selectedTheme}>{optionText}</OptionText>
+      </EachOption>
     </Option>
   );
 };

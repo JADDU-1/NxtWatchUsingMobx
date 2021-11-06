@@ -5,7 +5,13 @@ import { apiStatusConstants } from "../../constants/APIConstants";
 import HomePageEachVideoModel from "../models/HomePageModel";
 import { EachVideoObject } from "../types";
 
-import { APIStatus } from "@ib/api-constants";
+import {
+  API_SUCCESS,
+  API_FAILED,
+  API_FETCHING,
+  API_INITIAL,
+  APIStatus,
+} from "@ib/api-constants";
 
 class HomePageStore {
   @observable getHomePageAPIStatus!: APIStatus;
@@ -17,6 +23,7 @@ class HomePageStore {
 
   constructor(homePageService: HomePageServices) {
     this.homePageApiService = homePageService;
+    this.getHomePageAPIStatus = API_INITIAL;
     this.getHomePageVideosList = [];
     this.totalVideoCount = 0;
     this.shouldShowBannerCard = true;
@@ -49,6 +56,7 @@ class HomePageStore {
     this.shouldShowBannerCard = !this.shouldShowBannerCard;
   };
 
+  @action.bound
   getHomePageData(searchString: string) {
     const data = this.homePageApiService.getHomePageData(searchString);
     return bindPromiseWithOnSuccess(data)

@@ -21,6 +21,7 @@ import {
   ThemeButton,
 } from "./styledComponents";
 import { LightTheme } from "../../../constants/CommonConstants";
+import { clearUserSession } from "../../../utils/StorageUtils";
 
 interface HeaderNavbarProps extends RouteComponentProps {}
 
@@ -28,7 +29,7 @@ const HeaderNavbar = (props: HeaderNavbarProps) => {
   const { t } = useTranslation();
   const { history } = props;
   const onClickLogout = () => {
-    Cookies.remove("jwt_token");
+    clearUserSession();
     history.replace(LOGIN_IN_PATH);
   };
   return (

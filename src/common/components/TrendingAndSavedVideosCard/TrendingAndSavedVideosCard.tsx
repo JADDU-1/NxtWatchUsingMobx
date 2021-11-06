@@ -1,43 +1,42 @@
 import React from "react";
-import HomePageEachVideoModel from "../../stores/models/HomePageModel";
 import { formatDistanceToNow } from "date-fns";
 import {
   CardWrapper,
-  ImageContainer,
-  VideoDetailsContainer,
-  ViewsAndPublishSection,
   ChannelLogo,
-  DetailsContainer,
-  VideoTitle,
   ChannelName,
-  Views,
-  PublishedTime,
-  VideoImage,
+  DetailsContainer,
   DotElement,
+  ImageContainer,
   LinkEle,
-} from "./stylesComponents";
-import { VIDEO_DETAILS } from "../../constants/RouteConstants";
+  PublishedTime,
+  VideoDetailsContainer,
+  VideoImage,
+  VideoTitle,
+  Views,
+  ViewsAndPublishSection,
+} from "../../../components/HomePageVideoCard/stylesComponents";
+import { VIDEO_DETAILS } from "../../../constants/RouteConstants";
+import { Card, Link, Thumbnail, ThumbnailContainer } from "./styledComplements";
 
 interface HomePageVideoCardPropTypes {
-  eachVideoDetails: HomePageEachVideoModel;
+  eachVideoDetails: any;
   theme: string;
 }
 
-const HomePageVideoCard = (props: HomePageVideoCardPropTypes) => {
+const TrendingAndSavedVideosCard = (props: HomePageVideoCardPropTypes) => {
   const { eachVideoDetails, theme } = props;
   const { id, title, thumbnailUrl, channel, viewsCount, publishedAt } =
     eachVideoDetails;
 
-  const published = publishedAt && formatDistanceToNow(new Date(publishedAt));
+  const published = formatDistanceToNow(new Date(publishedAt));
 
   return (
-    <CardWrapper>
-      <LinkEle to={`${VIDEO_DETAILS}${id}`}>
-        <ImageContainer>
-          <VideoImage src={thumbnailUrl} />
-        </ImageContainer>
+    <Card>
+      <Link to={`${VIDEO_DETAILS}${id}`}>
+        <ThumbnailContainer>
+          <Thumbnail src={thumbnailUrl} />
+        </ThumbnailContainer>
         <VideoDetailsContainer>
-          <ChannelLogo src={channel.profileImageUrl} />
           <DetailsContainer>
             <VideoTitle theme={theme}>{title}</VideoTitle>
             <ChannelName theme={theme}>{channel.name}</ChannelName>
@@ -48,9 +47,9 @@ const HomePageVideoCard = (props: HomePageVideoCardPropTypes) => {
             </ViewsAndPublishSection>
           </DetailsContainer>
         </VideoDetailsContainer>
-      </LinkEle>
-    </CardWrapper>
+      </Link>
+    </Card>
   );
 };
 
-export default HomePageVideoCard;
+export default TrendingAndSavedVideosCard;

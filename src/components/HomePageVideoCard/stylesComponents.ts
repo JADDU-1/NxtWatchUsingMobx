@@ -27,7 +27,7 @@ export const VideoDetailsContainer = styled.div`
 `;
 
 export const ChannelLogo = styled.img`
-  ${tw` mr-2`}
+  ${tw`mr-2`}
   height:40px;
 `;
 

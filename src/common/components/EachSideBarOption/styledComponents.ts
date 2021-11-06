@@ -7,12 +7,16 @@ import { RiPlayListAddFill } from "react-icons/ri";
 import { HiFire } from "react-icons/hi";
 import { SiYoutubegaming } from "react-icons/si";
 
-export const Option = styled(Link)`
-  ${tw`flex items-center no-underline py-2  pl-4 `}
+export const EachOption = styled.li`
+  ${tw`flex items-center py-2  pl-4 `}
   background-color: ${(props) => props.theme === true && "#ffffff20"};
   background-color: ${(props) =>
     props.color === LightTheme && props.theme === true && "#f1f5f9"};
   font-weight: ${(props) => props.theme === true && "bold"};
+`;
+
+export const Option = styled(Link)`
+  ${tw` no-underline `}
 `;
 
 export const HomeIcon = styled(AiFillHome)`

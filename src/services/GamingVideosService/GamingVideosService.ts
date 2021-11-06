@@ -1,10 +1,8 @@
 import { create } from "apisauce";
-import Cookies from "js-cookie";
 import { apiMethods } from "../../constants/APIConstants";
-import { networkCallWithoutApisauce } from "../../utils/Apiutils";
 import { getAccessToken } from "../../utils/StorageUtils";
 
-class HomePageServices {
+class GamingVideosService {
   api;
   constructor() {
     this.api = create({
@@ -12,9 +10,9 @@ class HomePageServices {
     });
   }
 
-  getHomePageData = async (search: string) => {
+  getGamePageData = async () => {
     const JwtToken = getAccessToken();
-    const url = `https://apis.ccbp.in/videos/all?search=${search}`;
+    const url = `https://apis.ccbp.in/videos/gaming`;
     const options = {
       headers: {
         Authorization: `Bearer ${JwtToken}`,
@@ -33,4 +31,4 @@ class HomePageServices {
   };
 }
 
-export default HomePageServices;
+export default GamingVideosService;
