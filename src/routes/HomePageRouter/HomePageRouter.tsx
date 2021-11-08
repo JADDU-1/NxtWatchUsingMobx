@@ -3,9 +3,11 @@ import { action, observable } from "mobx";
 import { inject, observer } from "mobx-react";
 import React, { Component } from "react";
 import { withTranslation, WithTranslation } from "react-i18next";
+import FailureView from "../../common/components/FailureView/FailureView";
 import LoaderComponent from "../../common/components/Loader/Loader";
 import NavBarsWrapper from "../../common/components/NavBarsWrapper/NavBarsWrapper";
 import HomePageVideoCardsList from "../../components/HomePageVideoCardsList/HomePageVideoCardsList";
+import NoSearchResults from "../../components/NoSearchResults/NoSearchResults";
 import PremiumPlanCard from "../../components/PremiumPlanCard/PremiumPlanCard";
 import CommonContext from "../../context";
 import HomePageStore from "../../stores/HomePageStore/HomePageStore";
@@ -56,20 +58,32 @@ class HomePageRouter extends Component<InjectedProps> {
     this.searchedString = event.target.value;
   };
 
-  renderUiBasedOnApiStatus = (theme: string) => {
-    const { getHomePageAPIStatus, getHomePageVideosList } =
-      this.getHomePageStore();
+  @action.bound
+  onClickRetry = () => {
+    this.doNetworkCalls();
+  };
 
+  renderUiBasedOnApiStatus = (
+    theme: string,
+    getHomePageAPIStatus: any,
+    getHomePageVideosList: any
+  ) => {
     switch (getHomePageAPIStatus) {
       case API_SUCCESS:
         return (
-          <HomePageVideoCardsList
-            theme={theme}
-            homePageVideosList={getHomePageVideosList}
-          />
+          <>
+            {getHomePageVideosList.length === 0 ? (
+              <NoSearchResults onClickRetry={this.onClickRetry} theme={theme} />
+            ) : (
+              <HomePageVideoCardsList
+                theme={theme}
+                homePageVideosList={getHomePageVideosList}
+              />
+            )}
+          </>
         );
       case API_FAILED:
-        return <div>failure</div>;
+        return <FailureView onClickRetry={this.onClickRetry} theme={theme} />;
       case API_FETCHING:
         return <LoaderComponent />;
       default:
@@ -79,8 +93,12 @@ class HomePageRouter extends Component<InjectedProps> {
 
   renderHomeUI = () => {
     const { t } = this.props;
-    const { onChangeBannerCardStatus, shouldShowBannerCard } =
-      this.getHomePageStore();
+    const {
+      onChangeBannerCardStatus,
+      shouldShowBannerCard,
+      getHomePageAPIStatus,
+      getHomePageVideosList,
+    } = this.getHomePageStore();
     return (
       <CommonContext.Consumer>
         {(value) => {
@@ -102,7 +120,11 @@ class HomePageRouter extends Component<InjectedProps> {
                     <SearchIcon onClick={this.getSearchedData} />
                   </SearchIconContainer>
                 </SearInputAndIconContainer>
-                {this.renderUiBasedOnApiStatus(selectedTheme)}
+                {this.renderUiBasedOnApiStatus(
+                  selectedTheme,
+                  getHomePageAPIStatus,
+                  getHomePageVideosList
+                )}
               </SearchBarAndCardsContainer>
             </HomePageWrapper>
           );

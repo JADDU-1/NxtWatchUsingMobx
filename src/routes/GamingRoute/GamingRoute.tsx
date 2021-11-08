@@ -11,6 +11,8 @@ import { HomePageWrapper } from "../HomePageRouter/styledComponents";
 import { GamingLogo, VideosList } from "./styledComponents";
 import GamePageCard from "../../components/GamePageCard/GamePageCard";
 import LoaderComponent from "../../common/components/Loader/Loader";
+import { action } from "mobx";
+import FailureView from "../../common/components/FailureView/FailureView";
 
 interface InjectedProps extends WithTranslation {
   gameVideosStore: GameVideosStore;
@@ -32,10 +34,16 @@ class GamingRoute extends Component<InjectedProps> {
     this.getGamePageStore().getGamePageData();
   };
 
-  renderUiBasedOnApiStatus = (theme: string) => {
-    const { getGamePageAPIStatus, getGamePageVideosList } =
-      this.getGamePageStore();
-    console.log(getGamePageVideosList, "game");
+  @action.bound
+  onClickRetry = () => {
+    this.doNetworkCalls();
+  };
+
+  renderUiBasedOnApiStatus = (
+    theme: string,
+    getGamePageAPIStatus: any,
+    getGamePageVideosList: any
+  ) => {
     switch (getGamePageAPIStatus) {
       case API_SUCCESS:
         return (
@@ -50,7 +58,7 @@ class GamingRoute extends Component<InjectedProps> {
           </>
         );
       case API_FAILED:
-        return <div>failure</div>;
+        return <FailureView onClickRetry={this.onClickRetry} theme={theme} />;
       case API_FETCHING:
         return <LoaderComponent />;
       default:
@@ -60,6 +68,8 @@ class GamingRoute extends Component<InjectedProps> {
 
   renderUI = () => {
     const { t } = this.props;
+    const { getGamePageAPIStatus, getGamePageVideosList } =
+      this.getGamePageStore();
     return (
       <CommonContext.Consumer>
         {(value) => {
@@ -72,7 +82,11 @@ class GamingRoute extends Component<InjectedProps> {
                 titleText={t("gaming.gamingTitle")}
               />
               <VideosList>
-                {this.renderUiBasedOnApiStatus(selectedTheme)}
+                {this.renderUiBasedOnApiStatus(
+                  selectedTheme,
+                  getGamePageAPIStatus,
+                  getGamePageVideosList
+                )}
               </VideosList>
             </HomePageWrapper>
           );

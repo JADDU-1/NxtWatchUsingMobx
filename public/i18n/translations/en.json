@@ -54,5 +54,23 @@
   "gaming": {
     "gamingTitle": "Gaming",
     "watchingWorldWideText": "Watching Worldwide"
+  },
+  "failureView": {
+    "title": "Oops! Something Went Wrong",
+    "imageAltTextLight": "failureViewLightTheme",
+    "imageAltTextDark": "failureViewDarkTheme",
+    "description": "We are having some trouble to complete your request.Please try again",
+    "retryButtonText": "Retry"
+  },
+  "noSearchResults": {
+    "title": "No Search results found",
+    "description": "Try different key works or remove search filter",
+    "retryButtonText": "Retry",
+    "imageAltText": "No search results"
+  },
+  "noSavedVideos": {
+    "title": "No saved videos found",
+    "imageAltText": "No saved Videos Image",
+    "description": "You can save videos while watching them"
   }
 }

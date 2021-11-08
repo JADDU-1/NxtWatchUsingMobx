@@ -2,6 +2,7 @@ import React from "react";
 import {
   GamingPage,
   HomePage,
+  SavedVideosPage,
   TrendingVideosPage,
 } from "../../../constants/CommonConstants";
 import {
@@ -22,6 +23,7 @@ import {
 
 interface OptionDetails {
   id: string;
+  path: string;
   optionText: string;
 }
 
@@ -39,10 +41,10 @@ const EachSideBarOption = (props: EachSideBarOptionPropTypes) => {
     onChangeSelectedPage,
     selectedPage,
   } = props;
-  const { id, optionText } = eachOptionDetails;
+  const { path, optionText } = eachOptionDetails;
 
   const getIcon = () => {
-    switch (id) {
+    switch (path) {
       case HomePage:
         return <HomeIcon theme={selectedTheme} />;
       case TrendingVideosPage:
@@ -55,24 +57,24 @@ const EachSideBarOption = (props: EachSideBarOptionPropTypes) => {
   };
 
   const getPagePath = () => {
-    switch (id) {
-      case HomePage:
-        return HOME_PAGE_PATH;
+    switch (path) {
+      case SavedVideosPage:
+        return SAVED_VIDEOS_PAGE;
       case TrendingVideosPage:
         return TRENDING_VIDEOS_PAGE;
       case GamingPage:
         return GAMING_PAGE_PATH;
       default:
-        return SAVED_VIDEOS_PAGE;
+        return HOME_PAGE_PATH;
     }
   };
-  const isSelectedOption = selectedPage === id ? true : false;
+  const isSelectedOption = selectedPage === path ? true : false;
 
   return (
     <Option to={getPagePath()}>
       <EachOption
         onClick={() => {
-          onChangeSelectedPage(id);
+          onChangeSelectedPage(path);
         }}
         theme={isSelectedOption}
         color={selectedTheme}

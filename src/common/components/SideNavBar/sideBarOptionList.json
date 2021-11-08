@@ -1,18 +1,22 @@
 [
   {
     "id": "HOME",
+    "path": "/",
     "optionText": "Home"
   },
   {
     "id": "TRENDING",
+    "path": "/trending-videos",
     "optionText": "Trending"
   },
   {
     "id": "GAMING",
+    "path": "/gaming",
     "optionText": "Gaming"
   },
   {
     "id": "SAVED VIDEOS",
+    "path": "/saved-videos",
     "optionText": "Saved videos"
   }
 ]

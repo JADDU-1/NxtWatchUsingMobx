@@ -12,16 +12,9 @@ import VideoDetailsModel from "./stores/models/VideoDetailsModel/VideoDetailsMod
 
 @observer
 class App extends Component {
-  @observable selectedTheme: string;
-  @observable selectedPage: string;
-  @observable savedVideosList: any;
-
-  constructor(props: any) {
-    super(props);
-    this.selectedTheme = LightTheme;
-    this.selectedPage = HomePage;
-    this.savedVideosList = [];
-  }
+  @observable selectedTheme: string = LightTheme;
+  @observable selectedPage: string = HomePage;
+  @observable savedVideosList: any = [];
 
   @action.bound
   onChangeTheme = () => {
@@ -52,6 +45,7 @@ class App extends Component {
 
   render() {
     const { selectedTheme, selectedPage, savedVideosList } = this;
+
     return (
       <Provider {...stores}>
         <CommonContext.Provider

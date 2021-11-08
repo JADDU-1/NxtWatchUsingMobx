@@ -23,18 +23,18 @@ import {
   SavedVideosPage,
   TrendingVideosPage,
 } from "../../../constants/CommonConstants";
-//import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-//  interface SideNavBarProps extends RouteComponentProps {}
+interface SideNavBarProps extends RouteComponentProps {}
 
 interface SideNavBarProps extends WithTranslation {}
 
 const SideNavBar = (props: SideNavBarProps) => {
   const { t } = props;
 
-  //const { history } = props;
-  // const { pathname } = history.location;
-  //console.log(history);
+  const { history } = props;
+  const { pathname } = history.location;
+
   return (
     <CommonContext.Consumer>
       {(value) => {
@@ -46,7 +46,7 @@ const SideNavBar = (props: SideNavBarProps) => {
                 <EachSideBarOption
                   key={eachOption.id}
                   selectedTheme={selectedTheme}
-                  selectedPage={selectedPage}
+                  selectedPage={pathname}
                   eachOptionDetails={eachOption}
                   onChangeSelectedPage={onChangeSelectedPage}
                 />
@@ -123,4 +123,4 @@ const SideNavBar = (props: SideNavBarProps) => {
   );
 };
 
-export default withTranslation()(SideNavBar);
+export default withTranslation("translation")(withRouter(SideNavBar));

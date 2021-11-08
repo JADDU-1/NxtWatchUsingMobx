@@ -10,5 +10,5 @@ export const GamingLogo = styled(SiYoutubegaming)`
 `;
 
 export const VideosList = styled.ul`
-  ${tw`list-none flex flex-wrap mt-8`}
+  ${tw`list-none flex flex-wrap mt-8 h-full`}
 `;

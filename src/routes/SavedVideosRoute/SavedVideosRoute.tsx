@@ -7,6 +7,7 @@ import VideoCardsList from "../../components/VideoCardsList/VideoCardsList";
 import CommonContext from "../../context";
 import { HomePageWrapper } from "../HomePageRouter/styledComponents";
 import { SavedVideosLogo } from "./styledComponents";
+import NoSavedVideos from "../../components/NoSavedVideos/NosavedVideos";
 
 class SavedVideosRoute extends Component<WithTranslation> {
   renderTheSavedVideosUI = () => {
@@ -23,10 +24,14 @@ class SavedVideosRoute extends Component<WithTranslation> {
                 theme={selectedTheme}
                 titleText={t("savedVideos")}
               />
-              <VideoCardsList
-                videosList={savedVideosList}
-                theme={selectedTheme}
-              />
+              {savedVideosList.length === 0 ? (
+                <NoSavedVideos theme={selectedTheme} />
+              ) : (
+                <VideoCardsList
+                  videosList={savedVideosList}
+                  theme={selectedTheme}
+                />
+              )}
             </HomePageWrapper>
           );
         }}

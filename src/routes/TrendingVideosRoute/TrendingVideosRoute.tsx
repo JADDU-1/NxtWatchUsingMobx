@@ -10,6 +10,8 @@ import TrendingVideosStore from "../../stores/TrendingVideosStore/TrendingVideos
 import { HomePageWrapper } from "../HomePageRouter/styledComponents";
 import { TrendingVideosLogo } from "./styledComponents";
 import LoaderComponent from "../../common/components/Loader/Loader";
+import { action } from "mobx";
+import FailureView from "../../common/components/FailureView/FailureView";
 
 interface InjectedProps extends WithTranslation {
   trendingVideosStore: TrendingVideosStore;
@@ -31,9 +33,16 @@ class TrendingVideosRoute extends Component<InjectedProps> {
     this.getTrendingPageStore().getTrendingPageData();
   };
 
-  renderUiBasedOnApiStatus = (theme: string) => {
-    const { getTrendingPageAPIStatus, getTrendingPageVideosList } =
-      this.getTrendingPageStore();
+  @action.bound
+  onClickRetry = () => {
+    this.doNetworkCalls();
+  };
+
+  renderUiBasedOnApiStatus = (
+    theme: string,
+    getTrendingPageAPIStatus: any,
+    getTrendingPageVideosList: any
+  ) => {
     switch (getTrendingPageAPIStatus) {
       case API_SUCCESS:
         return (
@@ -43,7 +52,7 @@ class TrendingVideosRoute extends Component<InjectedProps> {
           />
         );
       case API_FAILED:
-        return <div>failure</div>;
+        return <FailureView onClickRetry={this.onClickRetry} theme={theme} />;
       case API_FETCHING:
         return <LoaderComponent />;
       default:
@@ -53,6 +62,8 @@ class TrendingVideosRoute extends Component<InjectedProps> {
 
   renderUI = () => {
     const { t } = this.props;
+    const { getTrendingPageAPIStatus, getTrendingPageVideosList } =
+      this.getTrendingPageStore();
     return (
       <CommonContext.Consumer>
         {(value) => {
@@ -64,7 +75,11 @@ class TrendingVideosRoute extends Component<InjectedProps> {
                 theme={selectedTheme}
                 titleText={t("trendingText")}
               />
-              {this.renderUiBasedOnApiStatus(selectedTheme)}
+              {this.renderUiBasedOnApiStatus(
+                selectedTheme,
+                getTrendingPageAPIStatus,
+                getTrendingPageVideosList
+              )}
             </HomePageWrapper>
           );
         }}
