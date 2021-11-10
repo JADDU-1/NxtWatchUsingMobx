@@ -32,13 +32,13 @@ interface SideNavBarProps extends WithTranslation {}
 const SideNavBar = (props: SideNavBarProps) => {
   const { t } = props;
 
-  const { history } = props;
-  const { pathname } = history.location;
-
   return (
     <CommonContext.Consumer>
       {(value) => {
-        const { selectedTheme, onChangeSelectedPage, selectedPage } = value;
+        const { selectedTheme } = value;
+
+        const { history } = props;
+        const { pathname } = history.location;
         return (
           <SideNavBarContainer>
             <OptionsContainer>
@@ -48,53 +48,8 @@ const SideNavBar = (props: SideNavBarProps) => {
                   selectedTheme={selectedTheme}
                   selectedPage={pathname}
                   eachOptionDetails={eachOption}
-                  onChangeSelectedPage={onChangeSelectedPage}
                 />
               ))}
-              {/* <Option
-                to={HOME_PAGE_PATH}
-                onClick={() => {
-                  onChangeSelectedPage(HomePage);
-                }}
-              >
-                <HomeIcon theme={selectedTheme} />
-                <OptionText theme={selectedTheme}>
-                  {t("navbar.home")}
-                </OptionText>
-              </Option>
-              <Option
-                to={TRENDING_VIDEOS_PAGE}
-                onClick={() => {
-                  onChangeSelectedPage(TrendingVideosPage);
-                }}
-              >
-                <TrendingIcon theme={selectedTheme} />
-                <OptionText theme={selectedTheme}>
-                  {t("navbar.trending")}
-                </OptionText>
-              </Option>
-              <Option
-                to={GAMING_PAGE_PATH}
-                onClick={() => {
-                  onChangeSelectedPage(GamingPage);
-                }}
-              >
-                <GamingIcon theme={selectedTheme} />
-                <OptionText theme={selectedTheme}>
-                  {t("navbar.gaming")}
-                </OptionText>
-              </Option>
-              <Option
-                to={SAVED_VIDEOS_PAGE}
-                onClick={() => {
-                  onChangeSelectedPage(SavedVideosPage);
-                }}
-              >
-                <SavedVideosIcon theme={selectedTheme} />
-                <OptionText theme={selectedTheme}>
-                  {t("navbar.savedVideos")}
-                </OptionText>
-              </Option> */}
             </OptionsContainer>
             <ContactUsSectionContainer>
               <ContactUsTitle theme={selectedTheme}>

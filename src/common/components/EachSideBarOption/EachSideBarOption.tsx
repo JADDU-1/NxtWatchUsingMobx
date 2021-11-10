@@ -31,20 +31,14 @@ interface EachSideBarOptionPropTypes {
   selectedTheme: string;
   eachOptionDetails: OptionDetails;
   selectedPage: string;
-  onChangeSelectedPage: Function;
 }
 
 const EachSideBarOption = (props: EachSideBarOptionPropTypes) => {
-  const {
-    eachOptionDetails,
-    selectedTheme,
-    onChangeSelectedPage,
-    selectedPage,
-  } = props;
-  const { path, optionText } = eachOptionDetails;
+  const { eachOptionDetails, selectedTheme, selectedPage } = props;
+  const { id, path, optionText } = eachOptionDetails;
 
   const getIcon = () => {
-    switch (path) {
+    switch (id) {
       case HomePage:
         return <HomeIcon theme={selectedTheme} />;
       case TrendingVideosPage:
@@ -57,7 +51,7 @@ const EachSideBarOption = (props: EachSideBarOptionPropTypes) => {
   };
 
   const getPagePath = () => {
-    switch (path) {
+    switch (id) {
       case SavedVideosPage:
         return SAVED_VIDEOS_PAGE;
       case TrendingVideosPage:
@@ -72,13 +66,7 @@ const EachSideBarOption = (props: EachSideBarOptionPropTypes) => {
 
   return (
     <Option to={getPagePath()}>
-      <EachOption
-        onClick={() => {
-          onChangeSelectedPage(path);
-        }}
-        theme={isSelectedOption}
-        color={selectedTheme}
-      >
+      <EachOption theme={isSelectedOption} color={selectedTheme}>
         {getIcon()}
         <OptionText theme={selectedTheme}>{optionText}</OptionText>
       </EachOption>

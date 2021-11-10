@@ -13,7 +13,6 @@ import VideoDetailsModel from "./stores/models/VideoDetailsModel/VideoDetailsMod
 @observer
 class App extends Component {
   @observable selectedTheme: string = LightTheme;
-  @observable selectedPage: string = HomePage;
   @observable savedVideosList: any = [];
 
   @action.bound
@@ -21,11 +20,6 @@ class App extends Component {
     this.selectedTheme =
       this.selectedTheme === LightTheme ? DarkTheme : LightTheme;
     console.log(this.selectedTheme);
-  };
-
-  @action.bound
-  onChangeSelectedPage = (pageName: string) => {
-    this.selectedPage = pageName;
   };
 
   @action.bound
@@ -44,7 +38,7 @@ class App extends Component {
   };
 
   render() {
-    const { selectedTheme, selectedPage, savedVideosList } = this;
+    const { selectedTheme, savedVideosList } = this;
 
     return (
       <Provider {...stores}>
@@ -52,8 +46,6 @@ class App extends Component {
           value={{
             selectedTheme,
             onChangeTheme: this.onChangeTheme,
-            selectedPage,
-            onChangeSelectedPage: this.onChangeSelectedPage,
             savedVideosList,
             onAddVideo: this.onAddVideo,
             onRemoveVideo: this.onRemoveVideo,

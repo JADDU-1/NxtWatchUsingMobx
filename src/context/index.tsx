@@ -5,8 +5,6 @@ import VideoDetailsModel from "../stores/models/VideoDetailsModel/VideoDetailsMo
 const CommonContext = React.createContext({
   selectedTheme: LightTheme,
   onChangeTheme: () => {},
-  selectedPage: HomePage,
-  onChangeSelectedPage: (pageName: string) => {},
   savedVideosList: [],
   onAddVideo: (videoDetails: VideoDetailsModel) => {},
   onRemoveVideo: (videoDetails: VideoDetailsModel) => {},
