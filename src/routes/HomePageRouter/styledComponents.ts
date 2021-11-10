@@ -5,7 +5,7 @@ import InputFieldWithLabel from "../../common/components/InputField/InputField";
 import { LightTheme } from "../../constants/CommonConstants";
 
 export const HomePageWrapper = styled.div`
-  ${tw`h-full w-full flex flex-col overflow-y-auto`}
+  ${tw`h-full w-full flex flex-col overflow-y-auto flex-grow`}
 
   background-color: ${(props) =>
     props.theme === LightTheme ? "#f9f9f9" : "#0f0f0f"}
@@ -13,10 +13,16 @@ export const HomePageWrapper = styled.div`
 
 export const SearchBarAndCardsContainer = styled.div`
   ${tw`p-6 h-full`}
+  @media (max-width:767px) {
+    ${tw`p-2`}
+  }
 `;
 
 export const SearInputAndIconContainer = styled.div`
   ${tw`flex w-4/12 mb-6`}
+  @media (max-width:767px) {
+    ${tw`w-full`}
+  }
 `;
 export const SearchIconContainer = styled.div`
   ${tw`px-6 flex items-center`}

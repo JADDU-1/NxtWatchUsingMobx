@@ -24,7 +24,7 @@ export const CloseIcon = styled(IoMdClose)`
 
 export const BuyNxtWatchText = styled.p`
   ${tw``}
-  width: 20%;
+  max-width: 200px;
 `;
 
 export const GetButton = styled.button`

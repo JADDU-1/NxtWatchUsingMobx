@@ -3,5 +3,8 @@ import styled from "styled-components";
 
 export const NoResultsImage = styled.img`
   ${tw``}
-  height: 270px;
+  height: 300px;
+  @media (max-width: 768px) {
+    height: 190px;
+  }
 `;

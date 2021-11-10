@@ -12,4 +12,8 @@ export const ImgContainer = styled(ImageContainer)`
 export const Image = styled.img`
   ${tw``}
   height:265px;
+  @media (max-width: 767px) {
+    ${tw` `}
+    height:180px;
+  }
 `;

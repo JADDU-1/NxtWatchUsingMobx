@@ -11,4 +11,7 @@ export const GamingLogo = styled(SiYoutubegaming)`
 
 export const VideosList = styled.ul`
   ${tw`list-none flex flex-wrap mt-8 h-full`}
+  @media (max-width: 767px) {
+    ${tw`w-full p-4`}
+  }
 `;

@@ -14,13 +14,23 @@ export const Card = styled.li`
 
 export const Link = styled(LinkEle)`
   ${tw`flex`}
+  @media (max-width: 767px) {
+    ${tw`flex-wrap w-full`}
+  }
 `;
 
 export const ThumbnailContainer = styled(ImageContainer)`
-  ${tw`mr-6`}
-  height:200px;
+  ${tw`mr-0 mb-2`}
+  @media(min-width: 768px) {
+    ${tw`mr-6 `}
+    height:200px;
+  }
 `;
 
 export const Thumbnail = styled(VideoImage)`
   ${tw`h-full w-full`}
+  @media(min-width: 768px) {
+    ${tw``}
+    width: 310px;
+  }
 `;

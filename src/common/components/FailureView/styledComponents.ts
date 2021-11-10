@@ -18,7 +18,7 @@ export const FailureViewTitle = styled.h3`
 `;
 
 export const FailureViewDescription = styled.p`
-  ${tw`m-0 mt-4 mb-6`}
+  ${tw`m-0 mt-4 mb-6 text-center`}
   color: ${(props) => (props.theme === LightTheme ? "#475569" : "#94a3b8")};
   font-family: "Roboto";
   font-size: 16px;

@@ -5,14 +5,21 @@ import ReactPlayer from "react-player";
 import { ChannelName, Views } from "../HomePageVideoCard/stylesComponents";
 
 export const VideoDetailsContainer = styled.div`
-  ${tw`w-full h-full p-6 `}
+  ${tw`w-full  p-6 overflow-y-scroll`}
   background-color: ${(props) =>
-    props.theme === LightTheme ? "#f9f9f9" : "#0f0f0f"}
+    props.theme === LightTheme ? "#f9f9f9" : "#0f0f0f"};
+  @media (max-width: 768px) {
+    ${tw`p-0 pt-4`}
+  }
 `;
 
 export const VideoContainer = styled.div`
   ${tw`w-full `}
   height: 70vh;
+  @media (max-width: 768px) {
+    ${tw`w-full`}
+    height:250px;
+  }
 `;
 
 export const VideoTitle = styled.p`
@@ -21,10 +28,16 @@ export const VideoTitle = styled.p`
   font-family: "Roboto";
   font-size: 16px;
   line-height: 1.7;
+  @media (max-width: 768px) {
+    ${tw`p-4`}
+  }
 `;
 
 export const ViewsAndLikesDislikesContainer = styled.div`
   ${tw`flex justify-between items-center`}
+  @media (max-width: 768px) {
+    ${tw`p-4 flex-col items-start`}
+  }
 `;
 
 export const ViewAndPublishedTimeContainer = styled.div`
@@ -32,6 +45,9 @@ export const ViewAndPublishedTimeContainer = styled.div`
 `;
 export const LikesAndDislikesContainer = styled.div`
   ${tw`flex p-4`}
+  @media (max-width: 768px) {
+    ${tw`p-0 pt-4`}
+  }
 `;
 
 export const LikeButton = styled.button`
@@ -40,6 +56,10 @@ export const LikeButton = styled.button`
   color: ${(props) => (props.theme === DarkTheme ? "#64748B" : "#475569")};
   font-family: "Roboto";
   font-size: 12px;
+  @media (max-width: 768px) {
+    ${tw`p-0 mr-4`}
+    width: 45px;
+  }
 `;
 
 export const DislikeButton = styled.button`
@@ -48,6 +68,10 @@ export const DislikeButton = styled.button`
   color: ${(props) => (props.theme === DarkTheme ? "#64748B" : "#475569")};
   font-family: "Roboto";
   font-size: 12px;
+  @media (max-width: 768px) {
+    ${tw`p-0 mr-4`}
+    width: 45px;
+  }
 `;
 
 export const SavedVideoButton = styled.button`
@@ -56,12 +80,19 @@ export const SavedVideoButton = styled.button`
   color: ${(props) => (props.theme === DarkTheme ? "#64748B" : "#475569")};
   font-family: "Roboto";
   font-size: 12px;
+  @media (max-width: 768px) {
+    ${tw`p-0 mr-4`}
+    width: 45px;
+  }
 `;
 
 export const HorizontalLine = styled.hr`
   ${tw`my-6`}
   border: ${(props) =>
     props.theme === DarkTheme ? "1px solid #475569" : "1px solid #e5e5e5"};
+  @media (max-width: 768px) {
+    ${tw`mx-4`}
+  }
 `;
 
 export const Subscribers = styled(Views)`
@@ -73,6 +104,9 @@ export const Description = styled.p`
   color: ${(props) => (props.theme === DarkTheme ? "#f8fafc" : "#1e293b")};
   font-family: "Roboto";
   font-size: 12px;
+  @media (max-width: 768px) {
+    ${tw`w-full`}
+  }
 `;
 
 export const ChannelNameAndDescriptionContainer = styled.div`
@@ -81,6 +115,9 @@ export const ChannelNameAndDescriptionContainer = styled.div`
 
 export const ChannelAndDescriptionContainer = styled.div`
   ${tw`flex`}
+  @media (max-width: 768px) {
+    ${tw`p-4`}
+  }
 `;
 
 export const ChannelTitle = styled(ChannelName)`

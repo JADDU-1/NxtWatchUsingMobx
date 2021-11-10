@@ -5,6 +5,9 @@ import { LightTheme } from "../../../constants/CommonConstants";
 export const SideNavBarContainer = styled.div`
   ${tw`flex flex-col py-4 flex-grow`}
   max-width:200px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const OptionsContainer = styled.ul`

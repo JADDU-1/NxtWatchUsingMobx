@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 import { DarkTheme, LightTheme } from "../../constants/CommonConstants";
 
 export const CardWrapper = styled.li`
-  ${tw`mr-6 mb-6`}
-  max-width:280px;
-  width: 100%;
+  ${tw`mb-6 w-full`}
+
+  @media (min-width: 768px) {
+    ${tw`mr-6 mb-6`}
+    max-width:280px;
+    width: 100%;
+  }
 `;
 
 export const LinkEle = styled(Link)`
