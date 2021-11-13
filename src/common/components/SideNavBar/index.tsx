@@ -28,19 +28,26 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 interface SideNavBarProps extends RouteComponentProps {}
 
 interface SideNavBarProps extends WithTranslation {}
+interface SideNavBarProps {
+  shouldShowMenuPopUp: boolean;
+  onChangeMenuStatus: () => void;
+}
 
 const SideNavBar = (props: SideNavBarProps) => {
   const { t } = props;
+  const { history, shouldShowMenuPopUp, onChangeMenuStatus } = props;
 
   return (
     <CommonContext.Consumer>
       {(value) => {
         const { selectedTheme } = value;
 
-        const { history } = props;
         const { pathname } = history.location;
         return (
-          <SideNavBarContainer>
+          <SideNavBarContainer
+            shouldShowMenuPopUp={shouldShowMenuPopUp}
+            theme={selectedTheme}
+          >
             <OptionsContainer>
               {sideBarOptionsList.map((eachOption) => (
                 <EachSideBarOption
@@ -48,6 +55,7 @@ const SideNavBar = (props: SideNavBarProps) => {
                   selectedTheme={selectedTheme}
                   selectedPage={pathname}
                   eachOptionDetails={eachOption}
+                  onChangeMenuStatus={onChangeMenuStatus}
                 />
               ))}
             </OptionsContainer>

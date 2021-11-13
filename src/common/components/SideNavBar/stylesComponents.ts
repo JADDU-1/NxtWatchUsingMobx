@@ -2,11 +2,18 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { LightTheme } from "../../../constants/CommonConstants";
 
-export const SideNavBarContainer = styled.div`
+interface SideNavBarContainerProps {
+  shouldShowMenuPopUp: boolean;
+}
+
+export const SideNavBarContainer = styled.div<SideNavBarContainerProps>`
   ${tw`flex flex-col py-4 flex-grow`}
   max-width:200px;
   @media (max-width: 768px) {
-    display: none;
+    ${tw`absolute w-full h-full`}
+    display: ${(props) => !props.shouldShowMenuPopUp && "none"};
+    background-color: ${(props) =>
+      props.theme === LightTheme ? "#ffffff" : "#212121"};
   }
 `;
 

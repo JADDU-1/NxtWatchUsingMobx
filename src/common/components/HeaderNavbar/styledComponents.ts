@@ -3,9 +3,11 @@ import styled from "styled-components";
 import NxtWatchLogo from "../NXTWatchLogo/NXTWatchLogo";
 import { BsBrightnessHigh, BsMoonFill } from "react-icons/bs";
 import { LightTheme } from "../../../constants/CommonConstants";
+import { FiLogOut } from "react-icons/fi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export const HeaderNavBarWrapper = styled.div`
-  ${tw` flex flex-row justify-between px-10 `}
+  ${tw` flex flex-row justify-between px-10`}
   @media (max-width: 768px) {
     ${tw`px-4 `}
   }
@@ -28,6 +30,10 @@ export const DarkThemeIcon = styled(BsMoonFill)`
   ${tw``}
   height:30px;
   width: 30px;
+  @media (max-width: 768px) {
+    height: 25px;
+    width: 25px;
+  }
 `;
 
 export const LightThemeIcon = styled(BsBrightnessHigh)`
@@ -35,6 +41,10 @@ export const LightThemeIcon = styled(BsBrightnessHigh)`
   height:30px;
   width: 30px;
   color: white;
+  @media (max-width: 768px) {
+    height: 25px;
+    width: 25px;
+  }
 `;
 
 export const ProfileIcon = styled.img`
@@ -43,12 +53,33 @@ export const ProfileIcon = styled.img`
   width: 30px;
 `;
 
+export const HamburgerMenuButton = styled.button`
+  ${tw`border-none mx-2 bg-transparent`}
+`;
+
+export const HamburgerMenuIcon = styled(GiHamburgerMenu)`
+  ${tw``}
+  height:25px;
+  width: 25px;
+  color: ${(props) => (props.theme === LightTheme ? "#212121" : "#ffffff")};
+`;
+
 export const LogoutButton = styled.button`
   ${tw`bg-transparent py-1 px-2 rounded-sm font-semibold outline-none cursor-pointer`}
   font-family: "Roboto";
   border-color: ${(props) =>
     props.theme === LightTheme ? "#3b82f6" : "#ffffff"};
   color: ${(props) => (props.theme === LightTheme ? "#3b82f6" : "#ffffff")};
+  @media (max-width: 768px) {
+    ${tw`border-none`}
+    color: ${(props) => (props.theme === LightTheme ? "#212121" : "#ffffff")};
+  }
+`;
+
+export const LogoutIcon = styled(FiLogOut)`
+  ${tw``}
+  height:25px;
+  width: 25px;
 `;
 
 export const PopUpContainer = styled.div`

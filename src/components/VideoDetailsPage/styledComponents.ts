@@ -1,7 +1,6 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 import { DarkTheme, LightTheme } from "../../constants/CommonConstants";
-import ReactPlayer from "react-player";
 import { ChannelName, Views } from "../HomePageVideoCard/stylesComponents";
 
 export const VideoDetailsContainer = styled.div`
@@ -29,7 +28,7 @@ export const VideoTitle = styled.p`
   font-size: 16px;
   line-height: 1.7;
   @media (max-width: 768px) {
-    ${tw`p-4`}
+    ${tw`px-4 mb-0`}
   }
 `;
 

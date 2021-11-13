@@ -19,25 +19,37 @@ interface NavbarWrapperPropTypes {
   component: React.ReactNode;
 }
 
-const NavBarsWrapper = (props: NavbarWrapperPropTypes) => {
-  const { component } = props;
-  return (
-    <CommonContext.Consumer>
-      {(value) => {
-        const { selectedTheme } = value;
+@observer
+class NavBarsWrapper extends Component<NavbarWrapperPropTypes> {
+  @observable shouldShowMenuPopUp: boolean = false;
 
-        return (
-          <CommonWrapper theme={selectedTheme}>
-            <HeaderNavbar />
-            <SideBarAndComponentContainer>
-              <SideNavBar />
-              {component}
-            </SideBarAndComponentContainer>
-          </CommonWrapper>
-        );
-      }}
-    </CommonContext.Consumer>
-  );
-};
+  onChangeMenuStatus = () => {
+    this.shouldShowMenuPopUp = !this.shouldShowMenuPopUp;
+  };
+
+  render() {
+    const { component } = this.props;
+    const { shouldShowMenuPopUp, onChangeMenuStatus } = this;
+    return (
+      <CommonContext.Consumer>
+        {(value) => {
+          const { selectedTheme } = value;
+          return (
+            <CommonWrapper theme={selectedTheme}>
+              <HeaderNavbar onChangeMenuStatus={onChangeMenuStatus} />
+              <SideBarAndComponentContainer>
+                <SideNavBar
+                  shouldShowMenuPopUp={shouldShowMenuPopUp}
+                  onChangeMenuStatus={onChangeMenuStatus}
+                />
+                {component}
+              </SideBarAndComponentContainer>
+            </CommonWrapper>
+          );
+        }}
+      </CommonContext.Consumer>
+    );
+  }
+}
 
 export default NavBarsWrapper;

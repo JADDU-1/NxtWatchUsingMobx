@@ -31,10 +31,12 @@ interface EachSideBarOptionPropTypes {
   selectedTheme: string;
   eachOptionDetails: OptionDetails;
   selectedPage: string;
+  onChangeMenuStatus: () => void;
 }
 
 const EachSideBarOption = (props: EachSideBarOptionPropTypes) => {
-  const { eachOptionDetails, selectedTheme, selectedPage } = props;
+  const { eachOptionDetails, selectedTheme, selectedPage, onChangeMenuStatus } =
+    props;
   const { id, path, optionText } = eachOptionDetails;
 
   const getIcon = () => {
@@ -65,7 +67,7 @@ const EachSideBarOption = (props: EachSideBarOptionPropTypes) => {
   const isSelectedOption = selectedPage === path ? true : false;
 
   return (
-    <Option to={getPagePath()}>
+    <Option to={getPagePath()} onClick={onChangeMenuStatus}>
       <EachOption theme={isSelectedOption} color={selectedTheme}>
         {getIcon()}
         <OptionText theme={selectedTheme}>{optionText}</OptionText>
