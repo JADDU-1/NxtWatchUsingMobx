@@ -25,16 +25,20 @@ class App extends Component {
   @action.bound
   onAddVideo = (videoDetails: VideoDetailsModel) => {
     const { savedVideosList } = this;
-    this.savedVideosList = [...savedVideosList, videoDetails];
+    if (
+      savedVideosList.some((eachVideo: any) => eachVideo.id === videoDetails.id)
+    ) {
+      this.onRemoveVideo(videoDetails);
+    } else this.savedVideosList = [...savedVideosList, videoDetails];
   };
 
   onRemoveVideo = (videoDetails: VideoDetailsModel) => {
     const { savedVideosList } = this;
-    const videoObject = savedVideosList.filter(
+    const videoObjects = savedVideosList.filter(
       (eachVideoItem: VideoDetailsModel) => eachVideoItem.id !== videoDetails.id
     );
 
-    this.setState({ savedVideosList: videoObject });
+    this.savedVideosList = [...videoObjects];
   };
 
   render() {

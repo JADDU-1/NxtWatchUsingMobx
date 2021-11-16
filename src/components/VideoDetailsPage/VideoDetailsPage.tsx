@@ -32,23 +32,17 @@ import {
   ChannelAndDescriptionContainer,
   ChannelTitle,
 } from "./styledComponents";
+import { observer } from "mobx-react";
 
 interface VideoDetailsPropTypes extends WithTranslation {
   videoDetails: VideoDetailsModel;
 }
 
+@observer
 class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
   @observable isLiked: boolean = false;
   @observable isDisliked: boolean = false;
   @observable isSaved: boolean = false;
-
-  onChangeLikeStatus = () => {
-    this.isLiked = !this.isLiked;
-  };
-
-  onChangeDislikeStatus = () => {
-    this.isDisliked = !this.isDisliked;
-  };
 
   render() {
     const { t } = this.props;
@@ -62,6 +56,10 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
       viewsCount,
       publishedAt,
       description,
+      isLiked,
+      isDisliked,
+      onChangeLikedStatus,
+      onChangeDislikedStatus,
     } = videoDetails;
 
     const published = formatDistanceToNow(new Date(publishedAt));
@@ -69,10 +67,13 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
     return (
       <CommonContext.Consumer>
         {(value) => {
-          const { selectedTheme, onAddVideo } = value;
-
+          const { selectedTheme, onAddVideo, savedVideosList } = value;
+          const isSavedVideo = () => {
+            return savedVideosList.some(
+              (eachVideo: any) => eachVideo.id === id
+            );
+          };
           const onChangeSaveVideoStatus = () => {
-            this.isSaved = !this.isSaved;
             onAddVideo(videoDetails);
           };
           return (
@@ -99,16 +100,16 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
                 <LikesAndDislikesContainer>
                   <LikeButton
                     theme={selectedTheme}
-                    onClick={this.onChangeLikeStatus}
-                    //isLiked={this.isLiked}
+                    onClick={onChangeLikedStatus}
+                    isLiked={isLiked}
                   >
                     <BiLike size={20} />
                     {t("videoDetailsPage.like")}
                   </LikeButton>
                   <DislikeButton
                     theme={selectedTheme}
-                    onClick={this.onChangeDislikeStatus}
-                    //isDisliked={this.isDisliked}
+                    onClick={onChangeDislikedStatus}
+                    isDisliked={isDisliked}
                   >
                     <BiDislike size={20} />
                     {t("videoDetailsPage.dislike")}
@@ -116,7 +117,7 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
                   <SavedVideoButton
                     theme={selectedTheme}
                     onClick={onChangeSaveVideoStatus}
-                    //isSaved={this.isSaved}
+                    isSaved={isSavedVideo()}
                   >
                     <MdPlaylistAdd size={20} />
                     {t("videoDetailsPage.save")}

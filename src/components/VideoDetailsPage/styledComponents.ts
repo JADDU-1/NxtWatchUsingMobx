@@ -3,6 +3,16 @@ import styled from "styled-components";
 import { DarkTheme, LightTheme } from "../../constants/CommonConstants";
 import { ChannelName, Views } from "../HomePageVideoCard/stylesComponents";
 
+interface LikedButtonProps {
+  isLiked: boolean;
+}
+interface DislikedButtonProps {
+  isDisliked: boolean;
+}
+interface SavedButtonProps {
+  isSaved: boolean;
+}
+
 export const VideoDetailsContainer = styled.div`
   ${tw`w-full  p-6 overflow-y-scroll`}
   background-color: ${(props) =>
@@ -49,10 +59,17 @@ export const LikesAndDislikesContainer = styled.div`
   }
 `;
 
-export const LikeButton = styled.button`
+export const LikeButton = styled.button<LikedButtonProps>`
   ${tw`flex items-center justify-between border-none bg-transparent  cursor-pointer`}
   width: 61px;
-  color: ${(props) => (props.theme === DarkTheme ? "#64748B" : "#475569")};
+  color: ${(props) =>
+    props.isLiked
+      ? "#3b82f6"
+      : props.theme === DarkTheme
+      ? "#64748B"
+      : "#475569"};
+  font-family: "Roboto";
+  font-size: 12px;
   font-family: "Roboto";
   font-size: 12px;
   @media (max-width: 768px) {
@@ -61,10 +78,15 @@ export const LikeButton = styled.button`
   }
 `;
 
-export const DislikeButton = styled.button`
+export const DislikeButton = styled.button<DislikedButtonProps>`
   ${tw`flex items-center justify-between border-none bg-transparent  cursor-pointer`}
   width: 75px;
-  color: ${(props) => (props.theme === DarkTheme ? "#64748B" : "#475569")};
+  color: ${(props) =>
+    props.isDisliked
+      ? "#3b82f6"
+      : props.theme === DarkTheme
+      ? "#64748B"
+      : "#475569"};
   font-family: "Roboto";
   font-size: 12px;
   @media (max-width: 768px) {
@@ -73,10 +95,17 @@ export const DislikeButton = styled.button`
   }
 `;
 
-export const SavedVideoButton = styled.button`
+export const SavedVideoButton = styled.button<SavedButtonProps>`
   ${tw`flex items-center justify-between border-none bg-transparent  cursor-pointer`}
   width: 64px;
-  color: ${(props) => (props.theme === DarkTheme ? "#64748B" : "#475569")};
+  color: ${(props) =>
+    props.isSaved
+      ? "#3b82f6"
+      : props.theme === DarkTheme
+      ? "#64748B"
+      : "#475569"};
+  font-family: "Roboto";
+  font-size: 12px;
   font-family: "Roboto";
   font-size: 12px;
   @media (max-width: 768px) {

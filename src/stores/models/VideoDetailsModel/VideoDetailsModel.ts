@@ -1,5 +1,5 @@
+import { observable } from "mobx";
 import { VideoDetailsObjectTypes } from "../../types";
-import HomePageEachVideoModel from "../HomePageModel";
 
 class VideoDetailsModel {
   id: string;
@@ -10,6 +10,8 @@ class VideoDetailsModel {
   viewsCount: string;
   publishedAt: string;
   description: string;
+  @observable isLiked: boolean;
+  @observable isDisliked: boolean;
 
   constructor(response: VideoDetailsObjectTypes) {
     this.id = response.video_details.id;
@@ -24,6 +26,22 @@ class VideoDetailsModel {
     this.viewsCount = response.video_details.view_count;
     this.publishedAt = response.video_details.published_at;
     this.description = response.video_details.description;
+    this.isLiked = false;
+    this.isDisliked = false;
   }
+
+  onChangeLikedStatus = () => {
+    this.isLiked = !this.isLiked;
+    if (this.isLiked) {
+      this.isDisliked = false;
+    }
+  };
+
+  onChangeDislikedStatus = () => {
+    this.isDisliked = !this.isDisliked;
+    if (this.isDisliked) {
+      this.isLiked = false;
+    }
+  };
 }
 export default VideoDetailsModel;
