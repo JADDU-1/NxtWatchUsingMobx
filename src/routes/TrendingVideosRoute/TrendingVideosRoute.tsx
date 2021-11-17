@@ -33,7 +33,6 @@ class TrendingVideosRoute extends Component<InjectedProps> {
     this.getTrendingPageStore().getTrendingPageData();
   };
 
-  @action.bound
   onClickRetry = () => {
     this.doNetworkCalls();
   };

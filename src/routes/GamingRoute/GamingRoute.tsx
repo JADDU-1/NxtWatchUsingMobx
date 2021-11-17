@@ -34,7 +34,6 @@ class GamingRoute extends Component<InjectedProps> {
     this.getGamePageStore().getGamePageData();
   };
 
-  @action.bound
   onClickRetry = () => {
     this.doNetworkCalls();
   };

@@ -30,17 +30,14 @@ class LoginPageRoute extends Component<PropsType> {
     return this.getInjectedProps().authenticStore;
   };
 
-  @action.bound
   onChangeUserName = (name: string) => {
     this.username = name;
   };
 
-  @action.bound
   onChangePassword = (password: string) => {
     this.password = password;
   };
 
-  @action.bound
   onSubmitCredentials = () => {
     const { t } = this.props;
     const name = this.username;
@@ -67,7 +64,6 @@ class LoginPageRoute extends Component<PropsType> {
       shouldShowPasswordStatus,
       shouldShowPassword,
       getUserLogInAPIError,
-      getUserLogInAPIStatus,
     } = this.getAuthStore();
 
     return (
@@ -94,7 +90,5 @@ class LoginPageRoute extends Component<PropsType> {
     );
   }
 }
-
-// export default withTranslation("translation", { withRef: true })(LoginPage);
 
 export default withTranslation()(LoginPageRoute);

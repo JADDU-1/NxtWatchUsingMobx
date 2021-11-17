@@ -1,17 +1,10 @@
-import { observable, action, computed } from "mobx";
+import { observable, action } from "mobx";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import HomePageServices from "../../services/HomePageServices";
-import { apiStatusConstants } from "../../constants/APIConstants";
 import HomePageEachVideoModel from "../models/HomePageModel";
 import { EachVideoObject } from "../types";
 
-import {
-  API_SUCCESS,
-  API_FAILED,
-  API_FETCHING,
-  API_INITIAL,
-  APIStatus,
-} from "@ib/api-constants";
+import { API_INITIAL, APIStatus } from "@ib/api-constants";
 
 class HomePageStore {
   @observable getHomePageAPIStatus!: APIStatus;

@@ -15,14 +15,9 @@ import {
   EnjoyRecommendationsText,
   ContactUsTitle,
   SocialMediaIcon,
+  SocialMediaLink,
 } from "./stylesComponents";
 import CommonContext from "../../../context";
-import {
-  GamingPage,
-  HomePage,
-  SavedVideosPage,
-  TrendingVideosPage,
-} from "../../../constants/CommonConstants";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 interface SideNavBarProps extends RouteComponentProps {}
@@ -63,18 +58,33 @@ const SideNavBar = (props: SideNavBarProps) => {
               <ContactUsTitle theme={selectedTheme}>
                 {t("navbar.contactUs")}
               </ContactUsTitle>
-              <SocialMediaIcon
-                alt="facebook"
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
-              />
-              <SocialMediaIcon
-                alt="twitter"
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png "
-              />
-              <SocialMediaIcon
-                alt="linkedIn"
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-              />
+              <SocialMediaLink
+                href={"https://www.facebook.com/"}
+                target="_blank"
+              >
+                <SocialMediaIcon
+                  alt="facebook"
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+                />
+              </SocialMediaLink>
+              <SocialMediaLink
+                href={"https://twitter.com/?lang=en"}
+                target="_blank"
+              >
+                <SocialMediaIcon
+                  alt="twitter"
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png "
+                />
+              </SocialMediaLink>
+              <SocialMediaLink
+                href={"https://www.linkedin.com/signup"}
+                target="_blank"
+              >
+                <SocialMediaIcon
+                  alt="linkedIn"
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+                />
+              </SocialMediaLink>
               <EnjoyRecommendationsText theme={selectedTheme}>
                 {t("navbar.enjoyRecommendationsText")}
               </EnjoyRecommendationsText>

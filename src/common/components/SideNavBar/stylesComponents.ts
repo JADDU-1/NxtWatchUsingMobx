@@ -39,3 +39,5 @@ export const EnjoyRecommendationsText = styled.p`
   ${tw`text-sm font-bold`}
   color: ${(props) => (props.theme === LightTheme ? "#000000" : "#ffffff")};
 `;
+
+export const SocialMediaLink = styled.a``;

@@ -43,22 +43,18 @@ class HomePageRouter extends Component<InjectedProps> {
     this.doNetworkCalls();
   }
 
-  @action.bound
   doNetworkCalls = () => {
     this.getHomePageStore().getHomePageData(this.searchedString);
   };
 
-  @action.bound
   getSearchedData = () => {
     this.doNetworkCalls();
   };
 
-  @action.bound
   onChangeSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.searchedString = event.target.value;
   };
 
-  @action.bound
   onClickRetry = () => {
     this.doNetworkCalls();
   };

@@ -6,6 +6,8 @@ import NavBarsWrapper from "../../common/components/NavBarsWrapper/NavBarsWrappe
 import VideoItemDetailsStore from "../../stores/VideoItemDetailsStore/VideoItemDetailsStore";
 import { RouteComponentProps } from "react-router-dom";
 import VideoDetailsPage from "../../components/VideoDetailsPage/VideoDetailsPage";
+import LoaderComponent from "../../common/components/Loader/Loader";
+import FailureView from "../../common/components/FailureView/FailureView";
 
 interface RouteParams {
   id: string;
@@ -40,6 +42,10 @@ class VideoItemDetailsRoute extends Component<PropTypes> {
     this.getVideoDetailsStore().getVideoDetailsPageData(id);
   };
 
+  onClickRetry = () => {
+    this.doNetworkCalls();
+  };
+
   renderUiBasedOnApiStatus = () => {
     const { getVideoDetailsAPIStatus, getVideoDetails } =
       this.getVideoDetailsStore();
@@ -49,9 +55,9 @@ class VideoItemDetailsRoute extends Component<PropTypes> {
       case API_SUCCESS:
         return <VideoDetailsPage videoDetails={getVideoDetails} />;
       case API_FAILED:
-        return <div>failure</div>;
+        return <FailureView onClickRetry={this.onClickRetry} />;
       case API_FETCHING:
-        return <div>loading the view</div>;
+        return <LoaderComponent />;
       default:
         return null;
     }

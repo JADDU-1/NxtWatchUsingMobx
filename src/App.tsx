@@ -6,8 +6,8 @@ import "./App.css";
 import CommonRoute from "./common/routes/CommonRoute";
 import stores from "./stores";
 import { observer, Provider } from "mobx-react";
-import { observable, action } from "mobx";
-import { LightTheme, HomePage, DarkTheme } from "./constants/CommonConstants";
+import { observable } from "mobx";
+import { LightTheme, DarkTheme } from "./constants/CommonConstants";
 import VideoDetailsModel from "./stores/models/VideoDetailsModel/VideoDetailsModel";
 
 @observer
@@ -15,14 +15,12 @@ class App extends Component {
   @observable selectedTheme: string = LightTheme;
   @observable savedVideosList: any = [];
 
-  @action.bound
   onChangeTheme = () => {
     this.selectedTheme =
       this.selectedTheme === LightTheme ? DarkTheme : LightTheme;
     console.log(this.selectedTheme);
   };
 
-  @action.bound
   onAddVideo = (videoDetails: VideoDetailsModel) => {
     const { savedVideosList } = this;
     if (

@@ -120,7 +120,9 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
                     isSaved={isSavedVideo()}
                   >
                     <MdPlaylistAdd size={20} />
-                    {t("videoDetailsPage.save")}
+                    {isSavedVideo()
+                      ? t("videoDetailsPage.unSave")
+                      : t("videoDetailsPage.save")}
                   </SavedVideoButton>
                 </LikesAndDislikesContainer>
               </ViewsAndLikesDislikesContainer>

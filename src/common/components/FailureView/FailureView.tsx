@@ -11,7 +11,7 @@ import {
 
 interface FailureViewPropTypes extends WithTranslation {
   onClickRetry: () => void;
-  theme: string;
+  theme?: string;
 }
 
 const FailureView = (props: FailureViewPropTypes) => {

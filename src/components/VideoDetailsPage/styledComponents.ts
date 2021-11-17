@@ -96,8 +96,8 @@ export const DislikeButton = styled.button<DislikedButtonProps>`
 `;
 
 export const SavedVideoButton = styled.button<SavedButtonProps>`
-  ${tw`flex items-center justify-between border-none bg-transparent  cursor-pointer`}
-  width: 64px;
+  ${tw`flex items-center  border-none bg-transparent  cursor-pointer`}
+  width: 70px;
   color: ${(props) =>
     props.isSaved
       ? "#3b82f6"
