@@ -1,5 +1,4 @@
-import { observable, action, computed } from "mobx";
-import { API_INITIAL } from "@ib/api-constants";
+import { observable, action } from "mobx";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import { setAccessToken } from "../../utils/StorageUtils";
 import AuthenticService from "../../services/AuthenticServices";
@@ -32,16 +31,6 @@ class AuthenticStore {
   @action.bound
   setGetUserLogInAPIStatus(apiStatus: number) {
     console.log(apiStatus);
-    // switch (apiStatus) {
-    //   case apiStatusConstants.success:
-    //     return (this.getUserLogInAPIStatus = apiStatusConstants.success);
-    //   case apiStatusConstants.failure:
-    //     return (this.getUserLogInAPIStatus = apiStatusConstants.failure);
-    //   case apiStatusConstants.loading:
-    //     return (this.getUserLogInAPIStatus = apiStatusConstants.loading);
-    //   default:
-    //     return null;
-    // }
   }
 
   @action.bound

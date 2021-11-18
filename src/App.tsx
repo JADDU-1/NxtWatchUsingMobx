@@ -18,9 +18,7 @@ class App extends Component {
   onChangeTheme = () => {
     this.selectedTheme =
       this.selectedTheme === LightTheme ? DarkTheme : LightTheme;
-    console.log(this.selectedTheme);
   };
-
   onAddVideo = (videoDetails: VideoDetailsModel) => {
     const { savedVideosList } = this;
     if (

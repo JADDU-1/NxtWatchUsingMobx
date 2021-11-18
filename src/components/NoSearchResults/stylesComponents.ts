@@ -5,6 +5,6 @@ export const NoResultsImage = styled.img`
   ${tw``}
   height: 300px;
   @media (max-width: 768px) {
-    height: 190px;
+    height: 175px;
   }
 `;

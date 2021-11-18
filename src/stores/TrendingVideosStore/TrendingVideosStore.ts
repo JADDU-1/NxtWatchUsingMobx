@@ -1,7 +1,5 @@
-import { observable, action, computed } from "mobx";
+import { observable, action } from "mobx";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
-import HomePageServices from "../../services/HomePageServices";
-import { apiStatusConstants } from "../../constants/APIConstants";
 import HomePageEachVideoModel from "../models/HomePageModel";
 import { EachVideoObject } from "../types";
 

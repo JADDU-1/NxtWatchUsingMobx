@@ -1,7 +1,5 @@
 import { create } from "apisauce";
-import Cookies from "js-cookie";
 import { apiMethods } from "../../constants/APIConstants";
-import { networkCallWithoutApisauce } from "../../utils/Apiutils";
 import { getAccessToken } from "../../utils/StorageUtils";
 
 class HomePageServices {

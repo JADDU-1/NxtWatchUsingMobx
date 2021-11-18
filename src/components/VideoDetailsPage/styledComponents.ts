@@ -119,7 +119,7 @@ export const HorizontalLine = styled.hr`
   border: ${(props) =>
     props.theme === DarkTheme ? "1px solid #475569" : "1px solid #e5e5e5"};
   @media (max-width: 768px) {
-    ${tw`mx-4`}
+    ${tw`mx-4 my-0`}
   }
 `;
 
@@ -133,7 +133,7 @@ export const Description = styled.p`
   font-family: "Roboto";
   font-size: 12px;
   @media (max-width: 768px) {
-    ${tw`w-full`}
+    ${tw`w-full mt-2`}
   }
 `;
 

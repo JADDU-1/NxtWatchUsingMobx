@@ -1,4 +1,4 @@
-import { observable, action, computed } from "mobx";
+import { observable, action } from "mobx";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import { APIStatus } from "@ib/api-constants";
 import VideoDetailsServices from "../../services/VideoDetailsServices/VideoDetailsServices";

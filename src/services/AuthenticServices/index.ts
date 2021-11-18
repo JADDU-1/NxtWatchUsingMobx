@@ -9,7 +9,6 @@ class AuthenticService {
   }
 
   LogInAPI = async (userDetails: Object) => {
-    //const userDetails = JSON.stringify(details);
     const url = "https://apis.ccbp.in/login";
     const options = {
       method: "POST",
@@ -24,13 +23,6 @@ class AuthenticService {
     };
 
     return loginResponse;
-
-    // return networkCallWithoutApisauce(
-    //   this.api,
-    //   "/login",
-    //   userDetails,
-    //   apiMethods.post
-    // );
   };
 }
 

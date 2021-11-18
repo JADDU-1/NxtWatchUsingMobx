@@ -1,4 +1,4 @@
-import { observable, action, computed } from "mobx";
+import { observable, action } from "mobx";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import HomePageEachVideoModel from "../models/HomePageModel";
 import { EachVideoObject } from "../types";
