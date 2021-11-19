@@ -1,25 +1,21 @@
 import React from "react";
 import { formatDistanceToNow } from "date-fns";
 import {
-  CardWrapper,
-  ChannelLogo,
   ChannelName,
   DetailsContainer,
   DotElement,
-  ImageContainer,
-  LinkEle,
   PublishedTime,
   VideoDetailsContainer,
-  VideoImage,
   VideoTitle,
   Views,
   ViewsAndPublishSection,
 } from "../../../components/HomePageVideoCard/stylesComponents";
 import { VIDEO_DETAILS } from "../../../constants/RouteConstants";
 import { Card, Link, Thumbnail, ThumbnailContainer } from "./styledComplements";
+import HomePageEachVideoModel from "../../../stores/models/HomePageModel";
 
 interface HomePageVideoCardPropTypes {
-  eachVideoDetails: any;
+  eachVideoDetails: HomePageEachVideoModel;
   theme: string;
 }
 
@@ -28,7 +24,7 @@ const TrendingAndSavedVideosCard = (props: HomePageVideoCardPropTypes) => {
   const { id, title, thumbnailUrl, channel, viewsCount, publishedAt } =
     eachVideoDetails;
 
-  const published = formatDistanceToNow(new Date(publishedAt));
+  const published = publishedAt && formatDistanceToNow(new Date(publishedAt));
 
   return (
     <Card>

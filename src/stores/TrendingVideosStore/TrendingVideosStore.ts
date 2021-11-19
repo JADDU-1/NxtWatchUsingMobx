@@ -10,7 +10,7 @@ class TrendingVideosStore {
   @observable getTrendingPageAPIStatus!: APIStatus;
   @observable getTrendingPageAPIError!: string | null;
   @observable trendingPageApiService: TrendingVideosService;
-  @observable getTrendingPageVideosList: any;
+  @observable getTrendingPageVideosList: Array<HomePageEachVideoModel>;
   @observable totalVideoCount: number;
 
   constructor(trendingPageService: TrendingVideosService) {
@@ -32,7 +32,7 @@ class TrendingVideosStore {
   }
 
   @action.bound
-  setTrendingPageAPIStatus(apiStatus: any) {
+  setTrendingPageAPIStatus(apiStatus: number) {
     this.getTrendingPageAPIStatus = apiStatus;
   }
 

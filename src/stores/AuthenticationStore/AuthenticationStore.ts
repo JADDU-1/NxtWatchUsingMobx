@@ -19,7 +19,6 @@ class AuthenticStore {
 
   @action.bound
   setUserLogInAPIResponse(response: any) {
-    console.log(response, "dfn");
     if (response.status) {
       this.getUserLogInAPIStatus = apiStatusConstants.success;
       setAccessToken(response.details.jwt_token);

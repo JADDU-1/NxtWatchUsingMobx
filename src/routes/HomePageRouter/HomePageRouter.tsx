@@ -1,5 +1,5 @@
 import { API_FAILED, API_FETCHING, API_SUCCESS } from "@ib/api-constants";
-import { action, observable } from "mobx";
+import { observable } from "mobx";
 import { inject, observer } from "mobx-react";
 import React, { Component } from "react";
 import { withTranslation, WithTranslation } from "react-i18next";
@@ -11,6 +11,7 @@ import NoSearchResults from "../../components/NoSearchResults/NoSearchResults";
 import PremiumPlanCard from "../../components/PremiumPlanCard/PremiumPlanCard";
 import CommonContext from "../../context";
 import HomePageStore from "../../stores/HomePageStore/HomePageStore";
+import HomePageEachVideoModel from "../../stores/models/HomePageModel";
 import {
   HomePageWrapper,
   SearchBarAndCardsContainer,
@@ -26,12 +27,7 @@ interface InjectedProps extends WithTranslation {
 @inject("homePageStore")
 @observer
 class HomePageRouter extends Component<InjectedProps> {
-  @observable searchedString: string;
-
-  constructor(props: any) {
-    super(props);
-    this.searchedString = "";
-  }
+  @observable searchedString: string = "";
 
   getInjectedProps = (): InjectedProps => this.props as InjectedProps;
 
@@ -61,8 +57,8 @@ class HomePageRouter extends Component<InjectedProps> {
 
   renderUiBasedOnApiStatus = (
     theme: string,
-    getHomePageAPIStatus: any,
-    getHomePageVideosList: any
+    getHomePageAPIStatus: string | number,
+    getHomePageVideosList: Array<HomePageEachVideoModel>
   ) => {
     switch (getHomePageAPIStatus) {
       case API_SUCCESS:

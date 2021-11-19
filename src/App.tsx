@@ -22,7 +22,9 @@ class App extends Component {
   onAddVideo = (videoDetails: VideoDetailsModel) => {
     const { savedVideosList } = this;
     if (
-      savedVideosList.some((eachVideo: any) => eachVideo.id === videoDetails.id)
+      savedVideosList.some(
+        (eachVideo: VideoDetailsModel) => eachVideo.id === videoDetails.id
+      )
     ) {
       this.onRemoveVideo(videoDetails);
     } else this.savedVideosList = [...savedVideosList, videoDetails];

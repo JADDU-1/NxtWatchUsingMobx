@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { WithTranslation, withTranslation } from "react-i18next";
-import { theme } from "twin.macro";
 import { VIDEO_DETAILS } from "../../constants/RouteConstants";
+import HomePageEachVideoModel from "../../stores/models/HomePageModel";
 import {
-  CardWrapper,
   LinkEle,
   DetailsContainer,
   VideoTitle,
@@ -12,7 +11,7 @@ import {
 import { ImgContainer, Image, Card } from "./styledComponents";
 
 interface GamePageCardProprTypes extends WithTranslation {
-  eachVideoDetails: any;
+  eachVideoDetails: HomePageEachVideoModel;
   theme: string;
 }
 
@@ -26,14 +25,12 @@ const GamePageCard = (props: GamePageCardProprTypes) => {
         <ImgContainer>
           <Image src={thumbnailUrl} />
         </ImgContainer>
-        {/* <VideoDetailsContainer> */}
         <DetailsContainer>
           <VideoTitle theme={theme}>{title}</VideoTitle>
           <Views theme={theme}>
             {viewsCount} {t("gaming.watchingWorldWideText")}
           </Views>
         </DetailsContainer>
-        {/* </VideoDetailsContainer> */}
       </LinkEle>
     </Card>
   );

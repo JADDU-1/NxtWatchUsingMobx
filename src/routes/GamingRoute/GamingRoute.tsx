@@ -4,15 +4,14 @@ import { inject, observer } from "mobx-react";
 import { withTranslation, WithTranslation } from "react-i18next";
 import NavBarsWrapper from "../../common/components/NavBarsWrapper/NavBarsWrapper";
 import CommonBanner from "../../common/components/TrendingAndSavedVideosHeader/TrendingAndSavedVideosHeader";
-import VideoCardsList from "../../components/VideoCardsList/VideoCardsList";
 import CommonContext from "../../context";
 import GameVideosStore from "../../stores/GameVideosStore/GameVideosStore";
 import { HomePageWrapper } from "../HomePageRouter/styledComponents";
 import { GamingLogo, VideosList } from "./styledComponents";
 import GamePageCard from "../../components/GamePageCard/GamePageCard";
 import LoaderComponent from "../../common/components/Loader/Loader";
-import { action } from "mobx";
 import FailureView from "../../common/components/FailureView/FailureView";
+import HomePageEachVideoModel from "../../stores/models/HomePageModel";
 
 interface InjectedProps extends WithTranslation {
   gameVideosStore: GameVideosStore;
@@ -40,20 +39,22 @@ class GamingRoute extends Component<InjectedProps> {
 
   renderUiBasedOnApiStatus = (
     theme: string,
-    getGamePageAPIStatus: any,
-    getGamePageVideosList: any
+    getGamePageAPIStatus: string | number,
+    getGamePageVideosList: Array<HomePageEachVideoModel>
   ) => {
     switch (getGamePageAPIStatus) {
       case API_SUCCESS:
         return (
           <>
-            {getGamePageVideosList.map((eachVideoDetails: any) => (
-              <GamePageCard
-                key={eachVideoDetails.id}
-                eachVideoDetails={eachVideoDetails}
-                theme={theme}
-              />
-            ))}
+            {getGamePageVideosList.map(
+              (eachVideoDetails: HomePageEachVideoModel) => (
+                <GamePageCard
+                  key={eachVideoDetails.id}
+                  eachVideoDetails={eachVideoDetails}
+                  theme={theme}
+                />
+              )
+            )}
           </>
         );
       case API_FAILED:

@@ -10,7 +10,7 @@ class GameVideosStore {
   @observable getGamePageAPIStatus!: APIStatus;
   @observable getGamePageAPIError!: string | null;
   @observable gamePageApiService: GamingVideosService;
-  @observable getGamePageVideosList: any;
+  @observable getGamePageVideosList: Array<HomePageEachVideoModel>;
   @observable totalVideoCount: number;
 
   constructor(gamePageApiService: GamingVideosService) {
@@ -32,7 +32,7 @@ class GameVideosStore {
   }
 
   @action.bound
-  setGamePageAPIStatus(apiStatus: any) {
+  setGamePageAPIStatus(apiStatus: number) {
     this.getGamePageAPIStatus = apiStatus;
   }
 

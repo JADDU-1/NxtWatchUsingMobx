@@ -12,6 +12,7 @@ import { TrendingVideosLogo } from "./styledComponents";
 import LoaderComponent from "../../common/components/Loader/Loader";
 import { action } from "mobx";
 import FailureView from "../../common/components/FailureView/FailureView";
+import HomePageEachVideoModel from "../../stores/models/HomePageModel";
 
 interface InjectedProps extends WithTranslation {
   trendingVideosStore: TrendingVideosStore;
@@ -39,8 +40,8 @@ class TrendingVideosRoute extends Component<InjectedProps> {
 
   renderUiBasedOnApiStatus = (
     theme: string,
-    getTrendingPageAPIStatus: any,
-    getTrendingPageVideosList: any
+    getTrendingPageAPIStatus: number,
+    getTrendingPageVideosList: Array<HomePageEachVideoModel>
   ) => {
     switch (getTrendingPageAPIStatus) {
       case API_SUCCESS:

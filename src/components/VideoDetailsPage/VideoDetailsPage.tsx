@@ -50,7 +50,6 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
     const {
       id,
       title,
-      thumbnailUrl,
       channel,
       videoUrl,
       viewsCount,
@@ -70,7 +69,7 @@ class VideoDetailsPage extends Component<VideoDetailsPropTypes> {
           const { selectedTheme, onAddVideo, savedVideosList } = value;
           const isSavedVideo = () => {
             return savedVideosList.some(
-              (eachVideo: any) => eachVideo.id === id
+              (eachVideo: VideoDetailsModel) => eachVideo.id === id
             );
           };
           const onChangeSaveVideoStatus = () => {

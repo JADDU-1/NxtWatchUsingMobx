@@ -14,7 +14,7 @@ interface InputElementProps {
   shouldShowErrorMessage?: boolean;
   placeHolderText: string;
   labelText?: string;
-  enteredValue?: any;
+  enteredValue?: string;
   shouldShowLabel?: boolean;
   className?: any;
 }

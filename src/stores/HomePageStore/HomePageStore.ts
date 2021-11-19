@@ -10,7 +10,7 @@ class HomePageStore {
   @observable getHomePageAPIStatus!: APIStatus;
   @observable getHomePageAPIError!: string | null;
   @observable homePageApiService: HomePageServices;
-  @observable getHomePageVideosList: any;
+  @observable getHomePageVideosList: Array<HomePageEachVideoModel>;
   @observable totalVideoCount: number;
   @observable shouldShowBannerCard: boolean;
 
@@ -35,7 +35,7 @@ class HomePageStore {
   }
 
   @action.bound
-  setGetHomePageAPIStatus(apiStatus: any) {
+  setGetHomePageAPIStatus(apiStatus: number) {
     this.getHomePageAPIStatus = apiStatus;
   }
 

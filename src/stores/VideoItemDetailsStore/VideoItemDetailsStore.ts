@@ -23,7 +23,7 @@ class VideoItemDetailsStore {
   }
 
   @action.bound
-  setVideoDetailsAPIStatus(apiStatus: any) {
+  setVideoDetailsAPIStatus(apiStatus: number) {
     this.getVideoDetailsAPIStatus = apiStatus;
   }
 

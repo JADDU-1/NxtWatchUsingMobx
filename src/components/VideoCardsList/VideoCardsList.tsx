@@ -1,10 +1,10 @@
 import React from "react";
 import TrendingAndSavedVideosCard from "../../common/components/TrendingAndSavedVideosCard/TrendingAndSavedVideosCard";
-import VideoDetailsModel from "../../stores/models/VideoDetailsModel/VideoDetailsModel";
+import HomePageEachVideoModel from "../../stores/models/HomePageModel";
 import { VideosListWrapper } from "./styledComponents";
 
 interface VideoCardsListPropTypes {
-  videosList: any;
+  videosList: Array<HomePageEachVideoModel>;
   theme: string;
 }
 
@@ -13,7 +13,7 @@ const VideoCardsList = (props: VideoCardsListPropTypes) => {
 
   return (
     <VideosListWrapper>
-      {videosList.map((eachVideoDetails: VideoDetailsModel) => (
+      {videosList.map((eachVideoDetails: HomePageEachVideoModel) => (
         <TrendingAndSavedVideosCard
           key={eachVideoDetails.id}
           eachVideoDetails={eachVideoDetails}

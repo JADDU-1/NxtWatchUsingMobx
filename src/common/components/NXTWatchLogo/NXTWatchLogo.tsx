@@ -9,6 +9,7 @@ interface NxtWatchLogoPropTypes {
 
 const NxtWatchLogo = (props: NxtWatchLogoPropTypes) => {
   const { className, shouldShowNxtDarkIcon } = props;
+
   return (
     <NxtLogoContainer className={className}>
       {shouldShowNxtDarkIcon === DarkTheme ? (
