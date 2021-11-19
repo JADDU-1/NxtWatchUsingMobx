@@ -16,7 +16,7 @@ interface InputElementProps {
   labelText?: string;
   enteredValue?: string;
   shouldShowLabel?: boolean;
-  className?: any;
+  className?: string;
 }
 
 @observer

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { DarkTheme } from "../../../constants/CommonConstants";
 import { NxtLogo, NxtLogoContainer } from "./styledComponents";
 
 interface NxtWatchLogoPropTypes {
-  className?: any;
+  className?: string;
   shouldShowNxtDarkIcon?: string;
 }
 
