@@ -9,7 +9,7 @@ import {
 
 interface InputElementProps {
   fieldType: string;
-  onChangeFunction: any;
+  onChangeFunction: Function;
   errorMessage?: string;
   shouldShowErrorMessage?: boolean;
   placeHolderText: string;
@@ -34,6 +34,12 @@ class InputFieldWithLabel extends Component<InputElementProps> {
       className,
     } = this.props;
 
+    const onChangeSearchInput = (
+      event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+      onChangeFunction(event.target.value);
+    };
+
     return (
       <InputContainer className={className}>
         {shouldShowLabel && (
@@ -42,7 +48,7 @@ class InputFieldWithLabel extends Component<InputElementProps> {
         <InputTag
           id={labelText}
           type={fieldType}
-          onChange={onChangeFunction}
+          onChange={onChangeSearchInput}
           placeholder={placeHolderText}
           value={enteredValue}
         />

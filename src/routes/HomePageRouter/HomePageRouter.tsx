@@ -47,8 +47,8 @@ class HomePageRouter extends Component<InjectedProps> {
     this.doNetworkCalls();
   };
 
-  onChangeSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.searchedString = event.target.value;
+  onChangeSearchInput = (value: string) => {
+    this.searchedString = value;
   };
 
   onClickRetry = () => {

@@ -44,12 +44,12 @@ const LoginForm = (props: LoginFormProps) => {
     getUserLogInAPIError,
   } = props;
 
-  const getUserName = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    onChangeUserName(event.target.value);
+  const getUserName = (value: string): void => {
+    onChangeUserName(value);
   };
 
-  const getPassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    onChangePassword(event.target.value);
+  const getPassword = (value: string): void => {
+    onChangePassword(value);
   };
   const onSubmitForm = (event: any) => {
     event.preventDefault();
