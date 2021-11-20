@@ -41,3 +41,10 @@ export interface FetchedDataVideoDetailsTypes {
   details: VideoDetailsObjectTypes;
   status: boolean;
 }
+
+export interface FetchedLoginDetailsTypes {
+  details: {
+    jwt_token: string;
+  };
+  status: boolean;
+}

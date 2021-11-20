@@ -6,7 +6,7 @@ export function getCookie(key: string): string | undefined {
   return Cookie.get(key);
 }
 
-function setCookie(key: string, value: any): void {
+function setCookie(key: string, value: string): void {
   Cookie.set(key, value, {
     expires: 30,
     path: "/",
@@ -16,7 +16,7 @@ function setCookie(key: string, value: any): void {
 export function getAccessToken(): string | undefined {
   return getCookie(ACCESS_TOKEN);
 }
-export function setAccessToken(accessToken: void) {
+export function setAccessToken(accessToken: string) {
   setCookie(ACCESS_TOKEN, accessToken);
 }
 

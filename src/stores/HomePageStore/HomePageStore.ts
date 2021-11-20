@@ -40,8 +40,8 @@ class HomePageStore {
   }
 
   @action.bound
-  setHomePageAPIError(error: any) {
-    this.getHomePageAPIError = error.error_msg;
+  setHomePageAPIError(error: string) {
+    this.getHomePageAPIError = error;
   }
 
   @action.bound

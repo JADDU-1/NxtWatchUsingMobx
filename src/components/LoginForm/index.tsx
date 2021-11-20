@@ -15,6 +15,8 @@ import {
   NxtLogoContainer,
 } from "./stylesComponents";
 import NxtWatchLogo from "../../common/components/NXTWatchLogo/NXTWatchLogo";
+import { API_FETCHING } from "@ib/api-constants";
+import LoaderComponent from "../../common/components/Loader/Loader";
 
 interface LoginFormProps extends WithTranslation {
   username: string;
@@ -27,6 +29,7 @@ interface LoginFormProps extends WithTranslation {
   usernameError: string;
   passwordError: string;
   getUserLogInAPIError: string | null;
+  getUserLogInAPIStatus: number;
 }
 
 const LoginForm = (props: LoginFormProps) => {
@@ -42,16 +45,18 @@ const LoginForm = (props: LoginFormProps) => {
     onChangePassword,
     onSubmitCredentials,
     getUserLogInAPIError,
+    getUserLogInAPIStatus,
   } = props;
 
-  const getUserName = (value: string): void => {
+  const getUserName = (value: string) => {
     onChangeUserName(value);
   };
 
-  const getPassword = (value: string): void => {
+  const getPassword = (value: string) => {
     onChangePassword(value);
   };
-  const onSubmitForm = (event: any) => {
+
+  const onSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmitCredentials();
   };
@@ -88,7 +93,11 @@ const LoginForm = (props: LoginFormProps) => {
           </ShouldShowPasswordLabel>
         </ShowShowPasswordContainer>
         <LoginButton type={t("loginPage.loginButtonType")}>
-          {t("loginPage.loginButton")}
+          {getUserLogInAPIStatus === API_FETCHING ? (
+            <LoaderComponent />
+          ) : (
+            t("loginPage.loginButton")
+          )}
         </LoginButton>
         <LoginError>{getUserLogInAPIError && getUserLogInAPIError}</LoginError>
       </Form>

@@ -7,7 +7,7 @@ import { FetchedDataVideoDetailsTypes } from "../types";
 
 class VideoItemDetailsStore {
   @observable getVideoDetailsAPIStatus!: APIStatus;
-  @observable getVideoDetailsAPIError!: string | null;
+  @observable getVideoDetailsAPIError!: string;
   @observable videoDetailsApiService: VideoDetailsServices;
   @observable getVideoDetails: any;
 
@@ -29,8 +29,8 @@ class VideoItemDetailsStore {
   }
 
   @action.bound
-  setVideoDetailsAPIError(error: any) {
-    this.getVideoDetailsAPIError = error.error_msg;
+  setVideoDetailsAPIError(error: string) {
+    this.getVideoDetailsAPIError = error;
   }
 
   getVideoDetailsPageData(id: string) {

@@ -64,6 +64,7 @@ class LoginPageRoute extends Component<PropsType> {
       shouldShowPasswordStatus,
       shouldShowPassword,
       getUserLogInAPIError,
+      getUserLogInAPIStatus,
     } = this.getAuthStore();
 
     return (
@@ -83,6 +84,7 @@ class LoginPageRoute extends Component<PropsType> {
               onChangePassword={this.onChangePassword}
               onSubmitCredentials={this.onSubmitCredentials}
               getUserLogInAPIError={getUserLogInAPIError}
+              getUserLogInAPIStatus={getUserLogInAPIStatus}
             />
           </LoginScreenContainer>
         )}

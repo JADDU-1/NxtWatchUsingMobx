@@ -37,8 +37,8 @@ class GameVideosStore {
   }
 
   @action.bound
-  setGamePageAPIError(error: any) {
-    this.getGamePageAPIError = error.error_msg;
+  setGamePageAPIError(error: string) {
+    this.getGamePageAPIError = error;
   }
 
   getGamePageData() {

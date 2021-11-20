@@ -37,8 +37,8 @@ class TrendingVideosStore {
   }
 
   @action.bound
-  setTrendingPageAPIError(error: any) {
-    this.getTrendingPageAPIError = error.error_msg;
+  setTrendingPageAPIError(error: string) {
+    this.getTrendingPageAPIError = error;
   }
 
   getTrendingPageData() {

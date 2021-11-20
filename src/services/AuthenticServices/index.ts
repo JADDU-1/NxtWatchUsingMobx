@@ -15,7 +15,7 @@ class AuthenticService {
       body: JSON.stringify(userDetails),
     };
     const response = await fetch(url, options);
-    console.log(response);
+
     const data = await response.json();
     const loginResponse = {
       details: data,
