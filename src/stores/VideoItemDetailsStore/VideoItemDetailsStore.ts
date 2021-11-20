@@ -3,6 +3,7 @@ import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import { APIStatus } from "@ib/api-constants";
 import VideoDetailsServices from "../../services/VideoDetailsServices/VideoDetailsServices";
 import VideoDetailsModel from "../models/VideoDetailsModel/VideoDetailsModel";
+import { FetchedDataVideoDetailsTypes } from "../types";
 
 class VideoItemDetailsStore {
   @observable getVideoDetailsAPIStatus!: APIStatus;
@@ -16,8 +17,8 @@ class VideoItemDetailsStore {
   }
 
   @action.bound
-  setVideoDetailsAPIResponse(response: any) {
-    if (response.status) {
+  setVideoDetailsAPIResponse(response: FetchedDataVideoDetailsTypes | null) {
+    if (response?.status) {
       this.getVideoDetails = new VideoDetailsModel(response.details);
     }
   }

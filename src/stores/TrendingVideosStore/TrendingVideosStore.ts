@@ -1,7 +1,7 @@
 import { observable, action } from "mobx";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import HomePageEachVideoModel from "../models/HomePageModel";
-import { EachVideoObject } from "../types";
+import { EachVideoObject, FetchedDataTypes } from "../types";
 
 import { APIStatus } from "@ib/api-constants";
 import TrendingVideosService from "../../services/TrendingVideosService/TrendingVideosService";
@@ -20,9 +20,9 @@ class TrendingVideosStore {
   }
 
   @action.bound
-  setTrendingPageAPIResponse(response: any) {
-    if (response.status) {
-      this.totalVideoCount = response.total;
+  setTrendingPageAPIResponse(response: FetchedDataTypes | null) {
+    if (response?.status) {
+      this.totalVideoCount = response.details.total;
       this.getTrendingPageVideosList = response.details.videos.map(
         (eachVideo: EachVideoObject) => {
           return new HomePageEachVideoModel(eachVideo);

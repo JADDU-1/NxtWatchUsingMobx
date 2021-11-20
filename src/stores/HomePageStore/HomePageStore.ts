@@ -2,7 +2,7 @@ import { observable, action } from "mobx";
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 import HomePageServices from "../../services/HomePageServices";
 import HomePageEachVideoModel from "../models/HomePageModel";
-import { EachVideoObject } from "../types";
+import { EachVideoObject, FetchedDataTypes } from "../types";
 
 import { API_INITIAL, APIStatus } from "@ib/api-constants";
 
@@ -23,9 +23,9 @@ class HomePageStore {
   }
 
   @action.bound
-  setHomePageAPIResponse(response: any) {
-    if (response.status) {
-      this.totalVideoCount = response.total;
+  setHomePageAPIResponse(response: FetchedDataTypes | null) {
+    if (response?.status) {
+      this.totalVideoCount = response.details.total;
       this.getHomePageVideosList = response.details.videos.map(
         (eachVideo: EachVideoObject) => {
           return new HomePageEachVideoModel(eachVideo);

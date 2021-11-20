@@ -31,3 +31,13 @@ export interface VideoDetailsObjectTypes {
     description: string;
   };
 }
+
+export interface FetchedDataTypes {
+  details: HomePageTypes;
+  status: boolean;
+}
+
+export interface FetchedDataVideoDetailsTypes {
+  details: VideoDetailsObjectTypes;
+  status: boolean;
+}
