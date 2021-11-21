@@ -9,11 +9,10 @@ class VideoItemDetailsStore {
   @observable getVideoDetailsAPIStatus!: APIStatus;
   @observable getVideoDetailsAPIError!: string;
   @observable videoDetailsApiService: VideoDetailsServices;
-  @observable getVideoDetails: any;
+  @observable getVideoDetails!: VideoDetailsModel;
 
   constructor(videoDetailsService: VideoDetailsServices) {
     this.videoDetailsApiService = videoDetailsService;
-    this.getVideoDetails = {};
   }
 
   @action.bound
