@@ -18,7 +18,7 @@ import VideoItemDetailsRoute from "../../routes/VideoItemDetailsRoute/VideoItemD
 import ProtectedRoute from "./ProtectedRoute";
 
 const CommonRoute = () => (
-  <Router basename={process.env.PUBLIC_URL}>
+  <Router>
     <Switch>
       <Route
         exact
