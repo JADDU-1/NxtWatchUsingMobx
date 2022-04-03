@@ -1,0 +1,76 @@
+{
+  "app": {
+    "learnReact": "Learn  React"
+  },
+  "pageNotFound": {
+    "404": "404",
+    "pageNotFoundText": "Page Not Found",
+    "noManPlaceText": "Oops! You've wandered into no man's land.",
+    "goHome": "Go to Home",
+    "imageAlt": "No Room"
+  },
+  "loginPage": {
+    "userNameLabel": "USERNAME",
+    "textFieldType": "text",
+    "passwordFieldType": "password",
+    "checkboxFieldType": "checkbox",
+    "passwordLabel": "PASSWORD",
+    "userNamePlaceholder": "username",
+    "passwordPlaceholder": "password",
+    "userNameErrorMessage": "Enter the username",
+    "passwordErrorMessage": "Enter the password",
+    "showPasswordLabel": "Show Password",
+    "loginButton": "LOGIN",
+    "loginButtonType": "submit",
+    "nxtLogoAltText": "Nxt logo"
+  },
+  "navbar": {
+    "home": "Home",
+    "trending": "Trending",
+    "gaming": "Gaming",
+    "savedVideos": "Saved videos",
+    "profileIconAltText": "profile",
+    "logout": "Logout",
+    "contactUs": "CONTACT US",
+    "enjoyRecommendationsText": "Enjoy! Now to see your channels and recommendations!"
+  },
+  "homePage": {
+    "buyPremiumPlansText": "Buy NXT Watch Premium paid plans with UPI",
+    "getItNowButtonText": "GET IT NOW",
+    "searchInputType": "search",
+    "searchInputPlaceHolderText": "Search"
+  },
+  "videoDetailsPage": {
+    "like": "Like",
+    "dislike": "Dislike",
+    "save": "Save",
+    "unSave": "Unsave",
+    "views": "views",
+    "ago": "ago",
+    "subscribers": "subscribers"
+  },
+  "trendingText": "Trending",
+  "savedVideos": "Saved Videos",
+  "gaming": {
+    "gamingTitle": "Gaming",
+    "watchingWorldWideText": "Watching Worldwide"
+  },
+  "failureView": {
+    "title": "Oops! Something Went Wrong",
+    "imageAltTextLight": "failureViewLightTheme",
+    "imageAltTextDark": "failureViewDarkTheme",
+    "description": "We are having some trouble to complete your request.Please try again",
+    "retryButtonText": "Retry"
+  },
+  "noSearchResults": {
+    "title": "No Search results found",
+    "description": "Try different key works or remove search filter",
+    "retryButtonText": "Retry",
+    "imageAltText": "No search results"
+  },
+  "noSavedVideos": {
+    "title": "No saved videos found",
+    "imageAltText": "No saved Videos Image",
+    "description": "You can save videos while watching them"
+  }
+}
