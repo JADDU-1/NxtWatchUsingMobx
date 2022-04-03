@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/NxtWatchUsingMobx/static/css/main.aeefc5de.chunk.css",
-    "main.js": "/NxtWatchUsingMobx/static/js/main.12903ad6.chunk.js",
-    "main.js.map": "/NxtWatchUsingMobx/static/js/main.12903ad6.chunk.js.map",
+    "main.js": "/NxtWatchUsingMobx/static/js/main.b71d7231.chunk.js",
+    "main.js.map": "/NxtWatchUsingMobx/static/js/main.b71d7231.chunk.js.map",
     "runtime-main.js": "/NxtWatchUsingMobx/static/js/runtime-main.965e478d.js",
     "runtime-main.js.map": "/NxtWatchUsingMobx/static/js/runtime-main.965e478d.js.map",
-    "static/js/2.e72888f7.chunk.js": "/NxtWatchUsingMobx/static/js/2.e72888f7.chunk.js",
-    "static/js/2.e72888f7.chunk.js.map": "/NxtWatchUsingMobx/static/js/2.e72888f7.chunk.js.map",
+    "static/js/2.56a5ab3a.chunk.js": "/NxtWatchUsingMobx/static/js/2.56a5ab3a.chunk.js",
+    "static/js/2.56a5ab3a.chunk.js.map": "/NxtWatchUsingMobx/static/js/2.56a5ab3a.chunk.js.map",
     "static/js/3.595701f9.chunk.js": "/NxtWatchUsingMobx/static/js/3.595701f9.chunk.js",
     "static/js/3.595701f9.chunk.js.map": "/NxtWatchUsingMobx/static/js/3.595701f9.chunk.js.map",
     "index.html": "/NxtWatchUsingMobx/index.html",
     "static/css/main.aeefc5de.chunk.css.map": "/NxtWatchUsingMobx/static/css/main.aeefc5de.chunk.css.map",
-    "static/js/2.e72888f7.chunk.js.LICENSE.txt": "/NxtWatchUsingMobx/static/js/2.e72888f7.chunk.js.LICENSE.txt"
+    "static/js/2.56a5ab3a.chunk.js.LICENSE.txt": "/NxtWatchUsingMobx/static/js/2.56a5ab3a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.965e478d.js",
-    "static/js/2.e72888f7.chunk.js",
+    "static/js/2.56a5ab3a.chunk.js",
     "static/css/main.aeefc5de.chunk.css",
-    "static/js/main.12903ad6.chunk.js"
+    "static/js/main.b71d7231.chunk.js"
   ]
 }
